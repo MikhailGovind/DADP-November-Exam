@@ -282,7 +282,7 @@ MonoBehaviour:
   grid_width: 16
   grid_height: 9
   tilePrefab: {fileID: 7895558014872501147, guid: 05e24df82ca38cf4181a7bf437a41669, type: 3}
-  Camera: {fileID: 1223022370}
+  camera: {fileID: 1223022370}
 --- !u!4 &1897025808
 Transform:
   m_ObjectHideFlags: 0

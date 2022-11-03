@@ -11,12 +11,13 @@ public class GridManager : MonoBehaviour
     private Tile tilePrefab;
 
     [SerializeField]
-    private Camera Camera;
+    private Camera camera;
 
-    private Dictionary<Vector3, Tile> gridTiles;
+    private Dictionary<Vector2, Tile> gridTiles;
 
     public void GenerateGrid()
     {
+        gridTiles = new Dictionary<Vector2, Tile>();
         for(int x = 0; x<grid_width; x++)
         {
             for(int y = 0; y<grid_height; y++)
@@ -31,7 +32,7 @@ public class GridManager : MonoBehaviour
                 gridTiles[new Vector2(x, y)] = spawnedTile;
             }
         }
-        Camera.transform.position = new Vector3((float)grid_width/2 -0.5f, (float)grid_height/2-0.5f, -10);
+        camera.transform.position = new Vector3((float)grid_width/2 -0.5f, (float)grid_height/2-0.5f, -10);
     }
 
 
