@@ -11,7 +11,7 @@ public class GridManager : MonoBehaviour
     private Tile tilePrefab;
 
     [SerializeField]
-    private Camera camera;
+    private Camera myCamera;
 
     private Dictionary<Vector2, Tile> gridTiles;
 
@@ -32,7 +32,7 @@ public class GridManager : MonoBehaviour
                 gridTiles[new Vector2(x, y)] = spawnedTile;
             }
         }
-        camera.transform.position = new Vector3((float)grid_width/2 -0.5f, (float)grid_height/2-0.5f, -10);
+        myCamera.transform.position = new Vector3((float)grid_width/2 -0.5f, (float)grid_height/2-0.5f, -10);
     }
 
 
