@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &5783350611669496171
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2957781639688781753, guid: a720523a3e34ca043aac31bfd6b99e54, type: 3}
+      propertyPath: Pit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2957781639688781753, guid: a720523a3e34ca043aac31bfd6b99e54, type: 3}
+      propertyPath: Walkable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4477318216094889853, guid: a720523a3e34ca043aac31bfd6b99e54, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4477318216094889853, guid: a720523a3e34ca043aac31bfd6b99e54, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4477318216094889853, guid: a720523a3e34ca043aac31bfd6b99e54, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4477318216094889853, guid: a720523a3e34ca043aac31bfd6b99e54, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4477318216094889853, guid: a720523a3e34ca043aac31bfd6b99e54, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4477318216094889853, guid: a720523a3e34ca043aac31bfd6b99e54, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4477318216094889853, guid: a720523a3e34ca043aac31bfd6b99e54, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4477318216094889853, guid: a720523a3e34ca043aac31bfd6b99e54, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4477318216094889853, guid: a720523a3e34ca043aac31bfd6b99e54, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4477318216094889853, guid: a720523a3e34ca043aac31bfd6b99e54, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4477318216094889853, guid: a720523a3e34ca043aac31bfd6b99e54, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480471311046304602, guid: a720523a3e34ca043aac31bfd6b99e54, type: 3}
+      propertyPath: m_Name
+      value: Pit_RoughTile
+      objectReference: {fileID: 0}
+    - target: {fileID: 5215927089542999272, guid: a720523a3e34ca043aac31bfd6b99e54, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 9035690746697498825, guid: b967f4aa40ff41f44a88ba4a57a71aa0, type: 3}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a720523a3e34ca043aac31bfd6b99e54, type: 3}
