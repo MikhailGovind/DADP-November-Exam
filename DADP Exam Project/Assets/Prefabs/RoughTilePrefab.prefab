@@ -356,9 +356,9 @@ MonoBehaviour:
   offsetColor: {r: 0.073122084, g: 0.19921252, b: 0.745283, a: 0.70980394}
   spriteRenderer: {fileID: 5215927089542999272}
   highlight: {fileID: 2989627041213963103}
-  Walkable: 1
-  Pit: 0
-  UnitSlot: {fileID: 9117414418943573970}
+  <Walkable>k__BackingField: 1
+  <Pit>k__BackingField: 0
+  <ObjectSlot>k__BackingField: {fileID: 0}
   debugTextContainer: {fileID: 2292516803900531150}
 --- !u!65 &-4576753922326979057
 BoxCollider:
