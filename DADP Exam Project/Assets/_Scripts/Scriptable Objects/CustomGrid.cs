@@ -1,8 +1,11 @@
+/*Script created by R-D
+ * Created: 05/11/2022
+ * Modified: */
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
+// ScriptableObject used to more eaily adjust and interact with grid generated 
 [CreateAssetMenu(fileName = "CustomGrid", menuName = "Scriptable Objects/CustomGrid" )]
 public class CustomGrid : ScriptableObject
 {

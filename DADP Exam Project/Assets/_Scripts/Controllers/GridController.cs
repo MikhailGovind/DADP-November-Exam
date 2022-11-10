@@ -1,8 +1,13 @@
+/*Script created by R-D
+ * Created: 05/11/2022
+ * Modified: */
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UIElements;
 
+// Class responsible for specific grid behaviours and interactions 
 public class GridController: MonoBehaviour
 {
 
@@ -10,8 +15,13 @@ public class GridController: MonoBehaviour
     private GridManager gridManager;
 
     [field:SerializeField]
-    internal CustomGrid currentGrid { get; private set; }
-    
+    internal CustomGrid currentGrid { get; private set; } // ScriptableObject of CustomGrid format slots in here
+
+    // ************************************ //
+    // The following section denoted by stars is where the debugging grid overlay is controlled
+    // -> switch in Unity Editor bool CustomDebug on Grid GridController script to see Debug Text on each tile
+    // -> not meant for player eyes - used for development only
+    // ************************************ //
     public delegate void DebuggingEvent();
     private DebuggingEvent overlaySwitch;
 
@@ -42,11 +52,6 @@ public class GridController: MonoBehaviour
         DebugOverlay = CustomDebug;
     }
 
-
-
-
-
-
     private void EnableDebugOverlay()
     {
         foreach (KeyValuePair<Vector2, RoughTile> entry in GridManager.gridTiles)
@@ -54,6 +59,7 @@ public class GridController: MonoBehaviour
             entry.Value.DebugText();
         }
     }
+    // ************************************ //
 
 
     private void Start()
