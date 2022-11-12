@@ -91,4 +91,15 @@ public class GridManager : MonoBehaviour
         }
         return null;
     }
+
+
+    private void ObstaclePlacement()
+    {
+        foreach (Vector2 entry in gridController.currentGrid.Obstacles)
+        {
+            //gridTiles[entry].ObjectSlot;
+        }
+            
+
+    }
 }

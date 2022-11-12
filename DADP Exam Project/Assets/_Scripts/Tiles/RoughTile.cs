@@ -36,6 +36,15 @@ public class RoughTile : BasicTile
         }
         
     }
+
+    public void SetObstacleInSlot(GameObject obs, int spriteNo)
+    {
+        ObjectSlot.SetActive(true);
+        GameObject.Instantiate(obs).transform.SetParent(ObjectSlot.transform);
+        //ObjectSlot.GetComponent<SpriteRenderer>().sprite = obs.GetComponent<ObjectData>().GetScriptObj().Sprites[spriteNo];
+    }
+
+
     // Function: returns Debug Text for grid overlay
     // for this specific tile, in form of string
     public string getDebugText()
