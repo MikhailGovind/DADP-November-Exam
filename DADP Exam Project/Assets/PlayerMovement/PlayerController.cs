@@ -1,4 +1,4 @@
-/*Script created by Mihail
+/*Script created by Mikhail
  * Created: 11/11/2022
  * Modified: */
 
