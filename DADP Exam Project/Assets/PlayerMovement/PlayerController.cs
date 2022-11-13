@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour
         Vector3Int gridPosition = collisionTilemap.WorldToCell(transform.position + (Vector3)direction); //finding the grid position
         if (collisionTilemap.HasTile(gridPosition)) //check if tilemap has a tile at this location of the grid
             return false; //if there is a tile, do not allow movement
-        return true; //if not, allow movement
+        return GridManager.gridTiles[transform.position + (Vector3)direction].Walkable; ; //if not, allow movement
     }
 
     private void Update()
