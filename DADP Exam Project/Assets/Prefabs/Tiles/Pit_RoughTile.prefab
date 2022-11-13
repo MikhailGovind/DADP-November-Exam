@@ -16,6 +16,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2957781639688781753, guid: a720523a3e34ca043aac31bfd6b99e54, type: 3}
+      propertyPath: <Pit>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2957781639688781753, guid: a720523a3e34ca043aac31bfd6b99e54, type: 3}
       propertyPath: <Walkable>k__BackingField
       value: 0
       objectReference: {fileID: 0}

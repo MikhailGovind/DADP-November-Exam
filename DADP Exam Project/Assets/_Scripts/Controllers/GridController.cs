@@ -20,6 +20,10 @@ public class GridController: MonoBehaviour
     [field:SerializeField]
     internal CustomGrid currentGrid { get; private set; } // ScriptableObject of CustomGrid format slots in here
 
+    [field: SerializeField]
+    internal ObstacleList obstaclesList { get; private set; }
+
+
     // ************************************ //
     // The following section denoted by stars is where the debugging grid overlay is controlled
     // -> switch in Unity Editor bool CustomDebug on Grid GridController script to see Debug Text on each tile

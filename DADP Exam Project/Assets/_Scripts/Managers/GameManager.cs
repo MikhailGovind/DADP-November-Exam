@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     protected GameState State { get; private set; } // current game state - see below enum for various phases
     
-    [field: SerializeField] protected GridManager gridManager { get; private set; }
+    [field: SerializeField] public GridManager gridManager { get; private set; }
   
     
     private void Awake()
@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour
         {
             case(GameState.LevelSetup):
                 gridManager.GenerateGrid();
+                gridManager.ObstaclePlacement();
                 break;
             case (GameState.PlayerTurn):
 
