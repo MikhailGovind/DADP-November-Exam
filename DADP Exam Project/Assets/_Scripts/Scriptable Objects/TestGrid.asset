@@ -26,3 +26,5 @@ MonoBehaviour:
   - {fileID: 3730156461666283352, guid: b967f4aa40ff41f44a88ba4a57a71aa0, type: 3}
   - {fileID: -3627106609784831732, guid: b967f4aa40ff41f44a88ba4a57a71aa0, type: 3}
   - {fileID: 9035690746697498825, guid: b967f4aa40ff41f44a88ba4a57a71aa0, type: 3}
+  pits: []
+  obstacles: []
