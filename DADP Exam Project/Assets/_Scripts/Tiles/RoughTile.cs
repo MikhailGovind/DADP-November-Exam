@@ -17,7 +17,7 @@ public class RoughTile : BasicTile
     private bool Walkable { get; set; } // Check if the tile is walkable for units
 
     [field:SerializeField]
-    private bool Pit { get; set; } // Check if the tile is a pit
+    public bool Pit { get; set; } // Check if the tile is a pit
 
     [field:SerializeField]
     private GameObject ObjectSlot { get; set; } // Slot to place unit/obstacle in - remember to update SpriteRenderer to show occupier

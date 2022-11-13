@@ -549,6 +549,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilePrefab: {fileID: 2957781639688781753, guid: a720523a3e34ca043aac31bfd6b99e54, type: 3}
+  pitPrefab: {fileID: 8741117473313214162, guid: 636bd27c3f6c31f4492e5162b5ee08ea, type: 3}
   gridController: {fileID: 1556316768}
 --- !u!1 &1601872595
 GameObject:

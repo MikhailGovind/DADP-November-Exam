@@ -17,6 +17,9 @@ public class GridManager : MonoBehaviour
     private RoughTile tilePrefab; // Tile prefab used to instantiate grid
 
     [SerializeField]
+    private RoughTile pitPrefab;
+
+    [SerializeField]
     private GridController gridController; // Script responsible for certain grid behaviours and interactions
 
     public static Dictionary<Vector2, RoughTile> gridTiles { get; private set; } // The collection of references to all the tiles in the grid
@@ -35,7 +38,16 @@ public class GridManager : MonoBehaviour
         {
             for(int y = 0; y<grid_height; y++)
             {
-                var spawnedTile = Instantiate(tilePrefab, new Vector3(x, y), Quaternion.identity, gridObject.transform) ;
+                Vector2 coordinates = new Vector2(x, y);
+                RoughTile spawnedTile;
+                if (gridController.currentGrid.Pits.Contains(coordinates))
+                {
+                    spawnedTile = Instantiate(pitPrefab, new Vector3(x, y), Quaternion.identity, gridObject.transform);
+                }
+                else 
+                {
+                    spawnedTile = Instantiate(tilePrefab, new Vector3(x, y), Quaternion.identity, gridObject.transform);
+                }
                 spawnedTile.SetGridPosition(new Vector2(x, y));
                 spawnedTile.name = $"Tile: {x}|{y}";
                 spawnedTile.setDebugText($"{x}|{y}",false);
@@ -100,7 +112,7 @@ public class GridManager : MonoBehaviour
         int counter = 1;
         foreach (Vector3 entry in gridController.currentGrid.Obstacles)
         {
-            if (GetTileAtPosition(new Vector2(entry.x, entry.y)))
+            if (!GetTileAtPosition(new Vector2(entry.x, entry.y)).Pit)
             {
                 List<GameObject> obstacles = gridController.obstaclesList.ObstaclePrefabs;
                 float c = obstacles.Count;
