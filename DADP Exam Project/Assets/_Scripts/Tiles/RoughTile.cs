@@ -14,10 +14,10 @@ using TMPro;
 public class RoughTile : BasicTile
 {
     [field:SerializeField]
-    private bool Walkable { get; set; } // Check if the tile is walkable for units
+    public bool Walkable { get; private set; } // Check if the tile is walkable for units
 
     [field:SerializeField]
-    public bool Pit { get; set; } // Check if the tile is a pit
+    public bool Pit { get; private set; } // Check if the tile is a pit
 
     [field:SerializeField]
     private GameObject ObjectSlot { get; set; } // Slot to place unit/obstacle in - remember to update SpriteRenderer to show occupier
@@ -62,6 +62,7 @@ public class RoughTile : BasicTile
         Obstacle Obs = obs.GetComponent<ObstacleData>().GetObstacleData();
 
         ObjectSlot.SetActive(true);
+        this.Walkable = false;
 
         switch (Obs.ObsType)
         {
@@ -75,8 +76,12 @@ public class RoughTile : BasicTile
 
             case Obstacle.ObstacleType.type3:
             case Obstacle.ObstacleType.type4:
-                GameObject other_slot = GameManager.Instance.gridManager.GetTileAtPosition(new Vector2(position.x+1, position.y)).ObjectSlot;
+                RoughTile other_tile = GameManager.Instance.gridManager.GetTileAtPosition(new Vector2(position.x + 1, position.y));
+                other_tile.GetComponent<RoughTile>().Walkable = false;
+
+                GameObject other_slot = other_tile.ObjectSlot;
                 other_slot.SetActive(true);
+                
 
                 GameObject temp1 = GameObject.Instantiate(obs, ObjectSlot.transform);
                 temp1.name = obs.name + " " + no;
@@ -91,13 +96,22 @@ public class RoughTile : BasicTile
                 break;
 
             case Obstacle.ObstacleType.type5:
-                GameObject other_slot1 = GameManager.Instance.gridManager.GetTileAtPosition(new Vector2(position.x + 1, position.y)).ObjectSlot;
+                RoughTile other_tile1 = GameManager.Instance.gridManager.GetTileAtPosition(new Vector2(position.x + 1, position.y));
+                other_tile1.Walkable = false; ;
+
+                GameObject other_slot1 =  other_tile1.ObjectSlot;
                 other_slot1.SetActive(true);
 
-                GameObject other_slot2 = GameManager.Instance.gridManager.GetTileAtPosition(new Vector2(position.x , position.y+1)).ObjectSlot;
+
+                RoughTile other_tile2 = GameManager.Instance.gridManager.GetTileAtPosition(new Vector2(position.x, position.y + 1));
+                other_tile2.Walkable = false;
+                GameObject other_slot2 =other_tile2.ObjectSlot;
                 other_slot2.SetActive(true);
 
-                GameObject other_slot3 = GameManager.Instance.gridManager.GetTileAtPosition(new Vector2(position.x + 1, position.y+1)).ObjectSlot;
+
+                RoughTile other_tile3 = GameManager.Instance.gridManager.GetTileAtPosition(new Vector2(position.x+1, position.y + 1));
+                other_tile3.Walkable = false;
+                GameObject other_slot3 = other_tile3.ObjectSlot;
                 other_slot3.SetActive(true);
 
                 GameObject temp2 = GameObject.Instantiate(obs, ObjectSlot.transform);
