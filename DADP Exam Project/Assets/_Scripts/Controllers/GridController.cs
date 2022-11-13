@@ -14,8 +14,15 @@ public class GridController: MonoBehaviour
     [SerializeField]
     private GridManager gridManager;
 
+   // [field:SerializeField]
+    //internal Obstacle1 obs1 { get; private set; }
+
     [field:SerializeField]
     internal CustomGrid currentGrid { get; private set; } // ScriptableObject of CustomGrid format slots in here
+
+    [field: SerializeField]
+    internal ObstacleList obstaclesList { get; private set; }
+
 
     // ************************************ //
     // The following section denoted by stars is where the debugging grid overlay is controlled
@@ -65,9 +72,10 @@ public class GridController: MonoBehaviour
     private void Start()
     {
         overlaySwitch = EnableDebugOverlay;
-        
-        
     }
 
+
+
+    
 }
 

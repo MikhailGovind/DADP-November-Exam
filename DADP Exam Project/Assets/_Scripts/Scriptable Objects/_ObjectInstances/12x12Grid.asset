@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f538ef6b4715cf41ad73c54deef234e, type: 3}
-  m_Name: TestGrid
+  m_Name: 12x12Grid
   m_EditorClassIdentifier: 
   width: 12
   height: 12
@@ -26,5 +26,12 @@ MonoBehaviour:
   - {fileID: 3730156461666283352, guid: b967f4aa40ff41f44a88ba4a57a71aa0, type: 3}
   - {fileID: -3627106609784831732, guid: b967f4aa40ff41f44a88ba4a57a71aa0, type: 3}
   - {fileID: 9035690746697498825, guid: b967f4aa40ff41f44a88ba4a57a71aa0, type: 3}
-  pits: []
-  obstacles: []
+  pits:
+  - {x: 3, y: 4}
+  - {x: 3, y: 5}
+  - {x: 3, y: 7}
+  obstacles:
+  - {x: 0, y: 0, z: 1}
+  - {x: 44, y: 55, z: 5103}
+  - {x: 11, y: 10, z: 5}
+  - {x: 5, y: 6, z: 5}

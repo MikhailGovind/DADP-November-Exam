@@ -17,9 +17,12 @@ public class GridManager : MonoBehaviour
     private RoughTile tilePrefab; // Tile prefab used to instantiate grid
 
     [SerializeField]
+    private RoughTile pitPrefab;
+
+    [SerializeField]
     private GridController gridController; // Script responsible for certain grid behaviours and interactions
 
-    public static Dictionary<Vector2, RoughTile> gridTiles; // The collection of references to all the tiles in the grid
+    public static Dictionary<Vector2, RoughTile> gridTiles { get; private set; } // The collection of references to all the tiles in the grid
 
     //Function: Generates physical playing, base grid and the accompanying dictionary of references for the tiles therein
     public void GenerateGrid()
@@ -35,22 +38,32 @@ public class GridManager : MonoBehaviour
         {
             for(int y = 0; y<grid_height; y++)
             {
-                var spawnedTile = Instantiate(tilePrefab, new Vector3(x, y), Quaternion.identity, gridObject.transform) ;
+                Vector2 coordinates = new Vector2(x, y);
+                RoughTile spawnedTile;
+                if (gridController.currentGrid.Pits.Contains(coordinates))
+                {
+                    spawnedTile = Instantiate(pitPrefab, new Vector3(x, y), Quaternion.identity, gridObject.transform);
+                }
+                else 
+                {
+                    spawnedTile = Instantiate(tilePrefab, new Vector3(x, y), Quaternion.identity, gridObject.transform);
+                }
+                spawnedTile.SetGridPosition(new Vector2(x, y));
                 spawnedTile.name = $"Tile: {x}|{y}";
                 spawnedTile.setDebugText($"{x}|{y}",false);
                 if (x == 0 && y == 0) // bottom left corner
                 {
                     spawnedTile.GetComponent<SpriteRenderer>().sprite = gridController.currentGrid.Sprites[6];
                 }
-                else if (x == 0 && y == grid_height - 1) // top left corner
+                else if (x == 0 && y == grid_height -1) // top left corner
                 {
                     spawnedTile.GetComponent<SpriteRenderer>().sprite = gridController.currentGrid.Sprites[0];
                 }
-                else if (x == grid_width - 1 && y == 0) // bottom right corner
+                else if (x == grid_width -1 && y == 0) // bottom right corner
                 {
                     spawnedTile.GetComponent<SpriteRenderer>().sprite = gridController.currentGrid.Sprites[8];
                 }
-                else if (x == grid_width - 1 && y == grid_height - 1) // top right corner
+                else if (x == grid_width - 1  && y == grid_height - 1 ) // top right corner
                 {
                     spawnedTile.GetComponent<SpriteRenderer>().sprite = gridController.currentGrid.Sprites[2];
                 }
@@ -62,11 +75,11 @@ public class GridManager : MonoBehaviour
                 {
                     spawnedTile.GetComponent<SpriteRenderer>().sprite = gridController.currentGrid.Sprites[7];
                 }
-                else if (x == grid_width-1) // right side
+                else if (x == grid_width - 1) // right side
                 {
                     spawnedTile.GetComponent<SpriteRenderer>().sprite = gridController.currentGrid.Sprites[5];
                 }
-                else if (y == grid_height-1) // top side
+                else if (y == grid_height - 1) // top side
                 {
                     spawnedTile.GetComponent<SpriteRenderer>().sprite = gridController.currentGrid.Sprites[1];
                 }
@@ -86,9 +99,32 @@ public class GridManager : MonoBehaviour
     // grid -> method to interact with dictionary of tiles
     public RoughTile GetTileAtPosition(Vector2 position)
     {
+        position = new Vector2(position.x%(grid_width),position.y%(grid_height));
         if(gridTiles.TryGetValue(position, out var tile)){
             return tile;
         }
         return null;
     }
+
+
+    public void ObstaclePlacement()
+    {
+        int counter = 1;
+        foreach (Vector3 entry in gridController.currentGrid.Obstacles)
+        {
+            if (!GetTileAtPosition(new Vector2(entry.x, entry.y)).Pit)
+            {
+                List<GameObject> obstacles = gridController.obstaclesList.ObstaclePrefabs;
+                float c = obstacles.Count;
+                GetTileAtPosition(new Vector2(entry.x, entry.y)).SetObstacleInSlot(obstacles[(int)Mathf.Lerp(0f, c, (float)entry.z%(c+1)/(float)c)], counter);
+                counter++;
+            }
+        }   
+
+    }
+
+
+
+
+
 }
