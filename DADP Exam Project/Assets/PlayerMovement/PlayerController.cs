@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     public Tilemap collisionTilemap; //variable for collision tilemap which serves are the collision layer
     public int playerMoves; //variable for number of moves player has available
 
+    public AIChase aiChase;
+
     private void Awake()
     {
         controls = new PlayerControls(); //initialising Player Controls
@@ -76,7 +78,8 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
+    //////////////////////////////////////testing
+    
     //private bool CanMove(Vector2 direction)
     //{ 
     //    Vector3Int gridPosition = groundTilemap.WorldToCell(transform.position + (Vector3)direction);

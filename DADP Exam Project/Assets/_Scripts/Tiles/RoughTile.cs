@@ -26,6 +26,7 @@ public class RoughTile : BasicTile
     private GameObject debugTextContainer; // object containing Debug Text for grid overlay
 
     private Vector2 position;
+    internal readonly object F;
 
 
 

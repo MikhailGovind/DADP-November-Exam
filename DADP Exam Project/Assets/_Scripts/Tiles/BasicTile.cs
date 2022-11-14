@@ -10,6 +10,18 @@ using UnityEngine;
  * -> RoughTile inherits from this class */
 public class BasicTile : MonoBehaviour
 {
+    //miks 
+    public int G;
+    public int H;
+
+    public int F { get { return G + H; } }
+
+    public bool isBlocked;
+
+    public BasicTile previous;
+
+    public Vector3Int gridLocation;
+
     [SerializeField]
     protected Color baseColor, offsetColor;
     [SerializeField]
@@ -17,8 +29,8 @@ public class BasicTile : MonoBehaviour
     [SerializeField]
     protected GameObject highlight;
 
-
     
+
 
     
 
