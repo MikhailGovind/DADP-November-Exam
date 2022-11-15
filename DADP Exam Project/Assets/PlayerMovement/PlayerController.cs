@@ -6,6 +6,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -22,6 +26,14 @@ public class PlayerController : MonoBehaviour
     public bool signal;
 
     private Vector2 Direction;
+
+    //animation variables
+    public Animator animator;
+    public SpriteRenderer spriteRenderer;
+
+    public TextMeshProUGUI playerMovesText;
+
+    public bool playerAlive;
 
     public Vector2 PlayerPosition { get; private set; }
     public RoughTile PlayerTile { get; private set; }
@@ -50,7 +62,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        playerAlive = true;
         PlayerPosition = this.transform.position;
         PlayerTile = GridManager.gridTiles[PlayerPosition];
         //signal = false;
@@ -67,7 +79,20 @@ public class PlayerController : MonoBehaviour
                 transform.position += (Vector3)direction;
                 PlayerPosition = transform.position;
                 PlayerTile = GridManager.gridTiles[PlayerPosition];
+
+                animator.SetBool("isWalking", true); //set walking to true
             }
+        } 
+
+        //set direction of sprite to movement direction 
+        if (direction.x < 0) //left
+        {
+            spriteRenderer.flipX = true;
+
+        }
+        else if (direction.x > 0) //right
+        {
+            spriteRenderer.flipX = false;
         }
     }
 
@@ -88,32 +113,23 @@ public class PlayerController : MonoBehaviour
             playerMoves = 0; //if less than 0, equate it to 0 
             GameManager.Instance.UpdateGameState(GameState.EnemyTurn);
             signal = false;
+
+            animator.SetBool("isWalking", false); //set walking to false to return back to idle
         }
-        
+
+        playerMovesText.text = "" + playerMoves;
+
+        if (playerAlive == false)
+        {
+            SceneManager.LoadScene("LoseScene");
+        }
     }
 
-    //////////////////////////////////////testing
-
-    //private bool CanMove(Vector2 direction)
-    //{ 
-    //    Vector3Int gridPosition = groundTilemap.WorldToCell(transform.position + (Vector3)direction);
-    //    if (!groundTilemap.HasTile(gridPosition) || collisionTilemap.HasTile(gridPosition))
-    //        return false;
-    //    return true;
-    //}
-
-    //private bool CanMove(Vector2 direction)
-    //{
-    //    if (tag == "Tile")
-    //        return false;
-    //    return true;
-    //}
-
-    //private void OnTriggerEnter2D(Collider2D other)
-    //{
-    //    if (other.tag == "Tile")
-    //    {
-    //        player.transform.SetParent(parent.transform, false);
-    //    }
-    //}
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Enemy")
+        {
+            playerAlive = false;
+        }
+    }
 }

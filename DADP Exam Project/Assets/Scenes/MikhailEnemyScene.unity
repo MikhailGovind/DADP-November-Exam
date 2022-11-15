@@ -1583,7 +1583,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <enemyController>k__BackingField: {fileID: 1191417132}
   <playerController>k__BackingField: {fileID: 649947561}
-  timeRemaining: 0
+  pacing: 2
 --- !u!1 &2117374081
 GameObject:
   m_ObjectHideFlags: 0
