@@ -11,16 +11,16 @@ using UnityEngine;
 public class BasicTile : MonoBehaviour
 {
     //miks 
-    public int G;
-    public int H;
+    //public int G;
+    //public int H;
 
-    public int F { get { return G + H; } }
+    //public int F { get { return G + H; } }
 
-    public bool isBlocked;
+    //public bool isBlocked;
 
-    public BasicTile previous;
+    //public BasicTile previous;
 
-    public Vector3Int gridLocation;
+    //public Vector3Int gridLocation;
 
     [SerializeField]
     protected Color baseColor, offsetColor;
