@@ -6,6 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 
 // GameManager that controls flow of game and other manager classes 
@@ -17,19 +18,21 @@ public class GameManager : MonoBehaviour
 
     //Singleton of GameManager - can access anywhere in project
     public static GameManager Instance;
-    protected GameState State { get; private set; } // current game state - see below enum for various phases
+    public GameState State { get; private set; } // current game state - see below enum for various phases
     
     [field: SerializeField] public GridManager gridManager { get; private set; }
-  
-    
+
+    [field: SerializeField] public UnitManager unitManager { get; private set; }
+
     private void Awake()
     {
         Instance = this; // setup of Singleton
+        UpdateGameState(GameState.LevelSetup);
     }
 
     private void Start()
     {
-        UpdateGameState(GameState.LevelSetup);
+        
     }
 
 
@@ -44,13 +47,15 @@ public class GameManager : MonoBehaviour
             case(GameState.LevelSetup):
                 gridManager.GenerateGrid();
                 gridManager.ObstaclePlacement();
+                Debug.Log("LevelSetup");
+                UpdateGameState(GameState.PlayerTurn);
                 break;
             case (GameState.PlayerTurn):
-
+                unitManager.PlayerTurn();
                 break;
-
             case (GameState.EnemyTurn):
-
+                unitManager.pacing = 0.5f;
+                unitManager.EnemyTurn();
                 break;
 
             case (GameState.Victory):

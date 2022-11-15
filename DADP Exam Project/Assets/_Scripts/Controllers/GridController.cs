@@ -30,7 +30,17 @@ public class GridController: MonoBehaviour
     // -> not meant for player eyes - used for development only
     // ************************************ //
     public delegate void DebuggingEvent();
+    // ************************************ //
+
+    //public delegate void DebuggingEvent2();
+    // ************************************ //
+    // 
     private DebuggingEvent overlaySwitch;
+
+    private DebuggingEvent overlaySwitch2;
+
+
+    // ************************************ //
 
     [SerializeField] bool CustomDebug;
 
@@ -39,7 +49,8 @@ public class GridController: MonoBehaviour
     public bool DebugOverlay
     {
         get { return CustomDebug; }
-        set{
+        set
+        {
             CustomDebug = value;
 
             if (CustomDebug != _PrevCustomDebug)
@@ -51,31 +62,69 @@ public class GridController: MonoBehaviour
         }
     }
 
-    private void OnValidate()
+    // ************************************ //
+
+    [SerializeField] bool CustomDebug2;
+
+    private bool _PrevCustomDebug2;
+
+    public bool DebugOverlay2
     {
-        
-        if (!Application.isPlaying) return;
+        get { return CustomDebug2; }
+        set
+        {
+            CustomDebug2 = value;
 
-        DebugOverlay = CustomDebug;
+            if (CustomDebug2 != _PrevCustomDebug2)
+            {
+                overlaySwitch2?.Invoke();
+            }
+
+            _PrevCustomDebug2 = CustomDebug2;
+        }
     }
+    // ************************************ //
 
+
+    // ************************************ //
     private void EnableDebugOverlay()
     {
         foreach (KeyValuePair<Vector2, RoughTile> entry in GridManager.gridTiles)
         {
             entry.Value.DebugText();
         }
+        //overlaySwitch -= EnableDebugOverlay;
     }
     // ************************************ //
-
-
+    private void EnableDebugOverlay2()
+    {
+        foreach (KeyValuePair<Vector2, RoughTile> entry in GridManager.gridTiles)
+        {
+            entry.Value.PathText();
+        }
+        //overlaySwitch2 -= EnableDebugOverlay2;
+    }
+    // ************************************ //
     private void Start()
     {
-        overlaySwitch = EnableDebugOverlay;
+        overlaySwitch += EnableDebugOverlay;
+        overlaySwitch2 += EnableDebugOverlay2;
+    }
+    // ************************************ //
+    //private void OnValidate()
+    //{
+
+    //    if (!Application.isPlaying) { return; }
+
+    //    DebugOverlay = CustomDebug;
+    //    DebugOverlay2 = CustomDebug2;
+    //}
+
+    private void Update()
+    {
+        DebugOverlay = CustomDebug;
+        DebugOverlay2 = CustomDebug2;
     }
 
-
-
-    
 }
 

@@ -14,12 +14,22 @@ public class PlayerController : MonoBehaviour
 
     //public variables
     public Tilemap collisionTilemap; //variable for collision tilemap which serves are the collision layer
-    public int playerMoves; //variable for number of moves player has available
+
+    [SerializeField]
+    public int playerMoves = 0; //variable for number of moves player has available
+
+    [SerializeField]
+    public bool signal;
+
+    private Vector2 Direction;
+
+    public Vector2 PlayerPosition { get; private set; }
+    public RoughTile PlayerTile { get; private set; }
 
     private void Awake()
     {
         controls = new PlayerControls(); //initialising Player Controls
-        playerMoves = 3; //assigning number of moves
+
     }
 
     //enabling Player Controls
@@ -34,9 +44,16 @@ public class PlayerController : MonoBehaviour
         controls.Disable();
     }
 
+
+
+
     // Start is called before the first frame update
     void Start()
     {
+        
+        PlayerPosition = this.transform.position;
+        PlayerTile = GridManager.gridTiles[PlayerPosition];
+        //signal = false;
         controls.Main.Movement.performed += ctx => Move(ctx.ReadValue<Vector2>()); //finding values for whenever the player avatar moves. Reading Vector2 values when performed
     }
 
@@ -45,7 +62,12 @@ public class PlayerController : MonoBehaviour
         if (playerMoves >= 1) //only allow player to move if they have a move available
         {
             if (CanMove(direction)) //check if the player avatar is colliding with the collision layer or not
+            {
+                playerMoves--;  
                 transform.position += (Vector3)direction;
+                PlayerPosition = transform.position;
+                PlayerTile = GridManager.gridTiles[PlayerPosition];
+            }
         }
     }
 
@@ -55,27 +77,22 @@ public class PlayerController : MonoBehaviour
         Vector3Int gridPosition = collisionTilemap.WorldToCell(transform.position + (Vector3)direction); //finding the grid position
         if (collisionTilemap.HasTile(gridPosition)) //check if tilemap has a tile at this location of the grid
             return false; //if there is a tile, do not allow movement
+
         return GridManager.gridTiles[transform.position + (Vector3)direction].Walkable; //if not, allow movement
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.UpArrow)) //check if any movement keys are pressed
+        if (playerMoves <= 0 && signal) //check if moves if less than 0
         {
-            playerMoves -= 1; //on each press subtract from moves available
-
-            if (playerMoves <= 0) //check if moves if less than 0
-            {
-                playerMoves = 0; //if less than 0, equate it to 0 
-            }
+            playerMoves = 0; //if less than 0, equate it to 0 
+            GameManager.Instance.UpdateGameState(GameState.EnemyTurn);
+            signal = false;
         }
-
-        if (playerMoves == 0) //when player moves are less than 0, activate enemy turn
-        {
-            //enemy turn
-        }
+        
     }
 
+    //////////////////////////////////////testing
 
     //private bool CanMove(Vector2 direction)
     //{ 

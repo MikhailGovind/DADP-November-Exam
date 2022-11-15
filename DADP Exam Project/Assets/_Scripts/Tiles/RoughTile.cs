@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using TMPro;
+using System.Xml.XPath;
 
 
 /* Class used for RoughTile Prefab and its variants 
@@ -23,9 +24,16 @@ public class RoughTile : BasicTile
     private GameObject ObjectSlot { get; set; } // Slot to place unit/obstacle in - remember to update SpriteRenderer to show occupier
 
     [SerializeField]
+    public GameObject PathNode;
+
+    [SerializeField]
+    public PathData pathData; 
+
+    [SerializeField]
     private GameObject debugTextContainer; // object containing Debug Text for grid overlay
 
     private Vector2 position;
+    //internal readonly object F;
 
 
 
@@ -151,7 +159,7 @@ public class RoughTile : BasicTile
     // for this specific tile, in form of string
     public string getDebugText()
     {
-        return debugTextContainer.GetComponent<TextMeshProUGUI>().text;
+        return debugTextContainer.GetComponent<TextMeshPro>().text;
     }
 
     /* Function: change the Debug Text for grid overlay
@@ -175,6 +183,18 @@ public class RoughTile : BasicTile
         else
         {
             debugTextContainer.SetActive(true);
+        }
+    }
+
+    public void PathText()
+    {
+        if (PathNode.activeSelf)
+        {
+            PathNode.SetActive(false);
+        }
+        else
+        {
+            PathNode.SetActive(true);
         }
     }
 
