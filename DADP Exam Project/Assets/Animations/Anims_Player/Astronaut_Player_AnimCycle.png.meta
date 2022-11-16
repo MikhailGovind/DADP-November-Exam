@@ -1,0 +1,532 @@
+fileFormatVersion: 2
+guid: 97997a3feda12814e8e8936421e32d31
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4167602637057317360
+    second: Astronaut_Player_AnimCycle_0
+  - first:
+      213: 8384130181342455839
+    second: Astronaut_Player_AnimCycle_1
+  - first:
+      213: -4575670298538658992
+    second: Astronaut_Player_AnimCycle_2
+  - first:
+      213: 8879869327262589164
+    second: Astronaut_Player_AnimCycle_3
+  - first:
+      213: -5654352881368853398
+    second: Astronaut_Player_AnimCycle_4
+  - first:
+      213: -9125654607705343206
+    second: Astronaut_Player_AnimCycle_5
+  - first:
+      213: 8145077574389064214
+    second: Astronaut_Player_AnimCycle_6
+  - first:
+      213: 2267126499313460438
+    second: Astronaut_Player_AnimCycle_7
+  - first:
+      213: 1056045678233845451
+    second: Astronaut_Player_AnimCycle_8
+  - first:
+      213: -4980714335994230826
+    second: Astronaut_Player_AnimCycle_9
+  - first:
+      213: -5166241854055839959
+    second: Astronaut_Player_AnimCycle_10
+  - first:
+      213: 2458594839401115674
+    second: Astronaut_Player_AnimCycle_11
+  - first:
+      213: 5513829535522317448
+    second: Astronaut_Player_AnimCycle_12
+  - first:
+      213: 5863717576160433808
+    second: Astronaut_Player_AnimCycle_13
+  - first:
+      213: -1176282202463117411
+    second: Astronaut_Player_AnimCycle_14
+  - first:
+      213: -1401325028653764200
+    second: Astronaut_Player_AnimCycle_15
+  - first:
+      213: -3198461537724114831
+    second: Astronaut_Player_AnimCycle_16
+  - first:
+      213: -1134099823783461246
+    second: Astronaut_Player_AnimCycle_17
+  - first:
+      213: 8473244845918024772
+    second: Astronaut_Player_AnimCycle_18
+  - first:
+      213: 4071438429436486482
+    second: Astronaut_Player_AnimCycle_19
+  - first:
+      213: 2253709010998776959
+    second: Astronaut_Player_AnimCycle_20
+  - first:
+      213: 7114197921589897009
+    second: Astronaut_Player_AnimCycle_21
+  - first:
+      213: -3249002542325995206
+    second: Astronaut_Player_AnimCycle_22
+  - first:
+      213: -7326721281890832788
+    second: Astronaut_Player_AnimCycle_23
+  - first:
+      213: -4173626386356347262
+    second: Astronaut_Player_AnimCycle_24
+  - first:
+      213: -7927756818650280647
+    second: Astronaut_Player_AnimCycle_25
+  - first:
+      213: 2411900817541677551
+    second: Astronaut_Player_AnimCycle_26
+  - first:
+      213: -6628446278749900020
+    second: Astronaut_Player_AnimCycle_27
+  - first:
+      213: -5977052669551197134
+    second: Astronaut_Player_AnimCycle_28
+  - first:
+      213: -581908504322712981
+    second: Astronaut_Player_AnimCycle_29
+  - first:
+      213: 1764938828589715020
+    second: Astronaut_Player_AnimCycle_30
+  - first:
+      213: 6454161877255957955
+    second: Astronaut_Player_AnimCycle_31
+  - first:
+      213: 198960330342057504
+    second: Astronaut_Player_AnimCycle_32
+  - first:
+      213: 792907445834073093
+    second: Astronaut_Player_AnimCycle_33
+  - first:
+      213: -4538128173276768683
+    second: Astronaut_Player_AnimCycle_34
+  - first:
+      213: 845085218486929927
+    second: Astronaut_Player_AnimCycle_35
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 20
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Astronaut_Player_AnimCycle_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f958ca748c46d930800000000000000
+      internalID: 4167602637057317360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Astronaut_Player_AnimCycle_1
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 192
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f186c899af96a5470800000000000000
+      internalID: 8384130181342455839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Astronaut_Player_AnimCycle_2
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 192
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0533c4e3b14ff70c0800000000000000
+      internalID: -4575670298538658992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Astronaut_Player_AnimCycle_3
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 192
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce0af570b12ab3b70800000000000000
+      internalID: 8879869327262589164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Astronaut_Player_AnimCycle_4
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 192
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a649d4f2304b781b0800000000000000
+      internalID: -5654352881368853398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Astronaut_Player_AnimCycle_5
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 192
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1bf0dceb792b5180800000000000000
+      internalID: -9125654607705343206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Astronaut_Player_AnimCycle_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 144
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 612e57146e0290170800000000000000
+      internalID: 8145077574389064214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Astronaut_Player_AnimCycle_7
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 144
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d424741a83767f10800000000000000
+      internalID: 2267126499313460438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Astronaut_Player_AnimCycle_8
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 144
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bcef6bdf2f3d7ae00800000000000000
+      internalID: 1056045678233845451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Astronaut_Player_AnimCycle_9
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 144
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d74e5b43b2f0eab0800000000000000
+      internalID: -4980714335994230826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Astronaut_Player_AnimCycle_10
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 144
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9270f39d762dd48b0800000000000000
+      internalID: -5166241854055839959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Astronaut_Player_AnimCycle_11
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 144
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a10bc11fafeae1220800000000000000
+      internalID: 2458594839401115674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Astronaut_Player_AnimCycle_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8846dd0cfbe058c40800000000000000
+      internalID: 5513829535522317448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Astronaut_Player_AnimCycle_13
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 096d146711c106150800000000000000
+      internalID: 5863717576160433808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Astronaut_Player_AnimCycle_14
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9f529ea1910dafe0800000000000000
+      internalID: -1176282202463117411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

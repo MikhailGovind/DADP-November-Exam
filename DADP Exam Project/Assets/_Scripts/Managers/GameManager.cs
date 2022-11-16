@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
+using UnityEngine.SceneManagement;
 
 
 // GameManager that controls flow of game and other manager classes 
@@ -23,6 +24,8 @@ public class GameManager : MonoBehaviour
     [field: SerializeField] public GridManager gridManager { get; private set; }
 
     [field: SerializeField] public UnitManager unitManager { get; private set; }
+
+    [field: SerializeField] public PlayerController playerController { get; private set; }
 
     private void Awake()
     {
