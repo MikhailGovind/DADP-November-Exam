@@ -35,6 +35,9 @@ public class PlayerController : MonoBehaviour
 
     public bool playerAlive;
 
+    [field: SerializeField]
+    public UnitManager unitManager { get; private set; }
+
     public Vector2 PlayerPosition { get; private set; }
     public RoughTile PlayerTile { get; private set; }
 
@@ -118,11 +121,6 @@ public class PlayerController : MonoBehaviour
         }
 
         playerMovesText.text = "" + playerMoves; //sets text to number of player moves available
-
-        //if (playerAlive == false)
-        //{
-        //    SceneManager.LoadScene("LoseScene");
-        //}
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -130,7 +128,13 @@ public class PlayerController : MonoBehaviour
         if (other.tag == "Enemy")
         {
             Debug.Log("he's touching me");
-            //playerAlive = false;
+            playerAlive = false;
+        }
+
+        if(other.tag == "WinBlock")
+        {
+            Debug.Log("Winner");
+            unitManager.playerWin();
         }
     }
 }

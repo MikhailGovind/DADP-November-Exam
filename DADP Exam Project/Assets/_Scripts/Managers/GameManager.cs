@@ -62,11 +62,11 @@ public class GameManager : MonoBehaviour
                 break;
 
             case (GameState.Victory):
-
+                unitManager.playerWin();
                 break;
 
             case (GameState.Defeat):
-
+                unitManager.playerLose();
                 break;
 
 

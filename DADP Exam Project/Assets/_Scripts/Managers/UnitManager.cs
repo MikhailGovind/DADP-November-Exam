@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditorInternal;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UnitManager : MonoBehaviour
 {
@@ -11,9 +12,14 @@ public class UnitManager : MonoBehaviour
     [field: SerializeField]
     public PlayerController playerController { get; private set; }
 
-    
-    public float pacing = 2f;
+    [field: SerializeField]
+    public Timer timer { get; private set; }
 
+    [field: SerializeField]
+    public PlayerPoints playerPoints { get; private set; }
+
+
+    public float pacing = 2f;
 
     public void PlayerTurn()
     {
@@ -52,6 +58,56 @@ public class UnitManager : MonoBehaviour
 
     }
 
+    public void noTimeLeft()
+    {
+        if (timer.TimeLeft == 0f)
+        {
+            playerWin();
+        }
+    }
 
+    private void Update()
+    {
+        if (playerController.PlayerPosition == enemyController.EnemyPosition)
+        {
+            playerLose();
+        }
+    }
 
+    public void playerWin()
+    {
+        //playerPoints.playerPoints += 1;
+
+        SceneManager.LoadScene("WinScene");
+
+        //if (playerPoints.playerPoints == 1)
+        //{
+        //    SceneManager.LoadScene("Level2");
+        //}
+
+        //if (playerPoints.playerPoints == 2)
+        //{
+        //    SceneManager.LoadScene("Level3");
+        //}
+
+        //if (playerPoints.playerPoints == 3)
+        //{
+        //    SceneManager.LoadScene("Level4");
+        //}
+
+        //if (playerPoints.playerPoints == 4)
+        //{
+        //    SceneManager.LoadScene("Level5");
+        //}
+
+        //if (playerPoints.playerPoints == 5)
+        //{
+        //    SceneManager.LoadScene("MenuScene");
+        //}
+    }
+
+    public void playerLose()
+    {
+        SceneManager.LoadScene("LoseScene");
+    }
 }

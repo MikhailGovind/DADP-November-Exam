@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Tile
   - Enemy
+  - WinBlock
   layers:
   - Default
   - TransparentFX
