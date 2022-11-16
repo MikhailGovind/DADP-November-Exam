@@ -117,19 +117,20 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("isWalking", false); //set walking to false to return back to idle
         }
 
-        playerMovesText.text = "" + playerMoves;
+        playerMovesText.text = "" + playerMoves; //sets text to number of player moves available
 
-        if (playerAlive == false)
-        {
-            SceneManager.LoadScene("LoseScene");
-        }
+        //if (playerAlive == false)
+        //{
+        //    SceneManager.LoadScene("LoseScene");
+        //}
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Enemy")
         {
-            playerAlive = false;
+            Debug.Log("he's touching me");
+            //playerAlive = false;
         }
     }
 }

@@ -102,4 +102,13 @@ public class EnemyController : MonoBehaviour
         HPathCalibration(Target);
         Move(LeastResistance());
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Player")
+        {
+            Debug.Log("i'm touching him");
+            //playerAlive = false;
+        }
+    }
 }
