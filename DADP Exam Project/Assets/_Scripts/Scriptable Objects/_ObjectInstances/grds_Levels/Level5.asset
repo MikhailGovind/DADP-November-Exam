@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f538ef6b4715cf41ad73c54deef234e, type: 3}
-  m_Name: Grid_Proper12x12
+  m_Name: Level5
   m_EditorClassIdentifier: 
   width: 12
   height: 12
@@ -26,13 +26,6 @@ MonoBehaviour:
   - {fileID: 6938447000329346084, guid: f1ed01f12ff04484a9c203455710611b, type: 3}
   - {fileID: 2445345339855577983, guid: f1ed01f12ff04484a9c203455710611b, type: 3}
   - {fileID: 8507735724282514917, guid: f1ed01f12ff04484a9c203455710611b, type: 3}
-  pits:
-  - {x: 3, y: 4}
-  - {x: 3, y: 5}
-  - {x: 3, y: 7}
-  winTiles:
-  - {x: 3, y: 0}
-  obstacles:
-  - {x: 0, y: 0, z: 1}
-  - {x: 11, y: 10, z: 5}
-  - {x: 5, y: 6, z: 5}
+  pits: []
+  winTiles: []
+  obstacles: []

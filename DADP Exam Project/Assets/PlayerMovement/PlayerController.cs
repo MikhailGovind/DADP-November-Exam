@@ -23,6 +23,9 @@ public class PlayerController : MonoBehaviour
     public int playerMoves = 0; //variable for number of moves player has available
 
     [SerializeField]
+    public int movesCounter = 0; //variable for total nunmber of moves player has availabe for this level before losing
+
+    [SerializeField]
     public bool signal;
 
     private Vector2 Direction;
@@ -32,6 +35,7 @@ public class PlayerController : MonoBehaviour
     public SpriteRenderer spriteRenderer;
 
     public TextMeshProUGUI playerMovesText;
+    public TextMeshProUGUI movesCounterText;
 
     public bool playerAlive;
 
@@ -78,7 +82,8 @@ public class PlayerController : MonoBehaviour
         {
             if (CanMove(direction)) //check if the player avatar is colliding with the collision layer or not
             {
-                playerMoves--;  
+                playerMoves--;
+                movesCounter--;
                 transform.position += (Vector3)direction;
                 PlayerPosition = transform.position;
                 PlayerTile = GridManager.gridTiles[PlayerPosition];
@@ -119,8 +124,14 @@ public class PlayerController : MonoBehaviour
 
             animator.SetBool("isWalking", false); //set walking to false to return back to idle
         }
+        
+        if (movesCounter <= 0)
+        {
+            movesCounter = 0; //if less than 0, equate it to 0 
+        }
 
         playerMovesText.text = "" + playerMoves; //sets text to number of player moves available
+        movesCounterText.text = "" + movesCounter; //sets text to number left on move counter
     }
 
     private void OnTriggerEnter2D(Collider2D other)

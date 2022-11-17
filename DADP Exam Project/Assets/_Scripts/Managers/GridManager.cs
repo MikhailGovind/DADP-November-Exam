@@ -20,6 +20,9 @@ public class GridManager : MonoBehaviour
     private RoughTile pitPrefab;
 
     [SerializeField]
+    private RoughTile winTilePrefab;
+
+    [SerializeField]
     private GridController gridController; // Script responsible for certain grid behaviours and interactions
 
     public static Dictionary<Vector2, RoughTile> gridTiles { get; private set; } // The collection of references to all the tiles in the grid
@@ -44,6 +47,10 @@ public class GridManager : MonoBehaviour
                 {
                     spawnedTile = Instantiate(pitPrefab, new Vector3(x, y), Quaternion.identity, gridObject.transform);
                 }
+                //else if (gridController.currentGrid.WinTiles.Contains(coordinates))
+                //{
+                //    spawnedTile = Instantiate(winTilePrefab, new Vector3(x, y), Quaternion.identity, gridObject.transform);
+                //}
                 else 
                 {
                     spawnedTile = Instantiate(tilePrefab, new Vector3(x, y), Quaternion.identity, gridObject.transform);

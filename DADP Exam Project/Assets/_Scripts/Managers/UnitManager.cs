@@ -58,6 +58,14 @@ public class UnitManager : MonoBehaviour
 
     }
 
+    public void noMovesLeft()
+    {
+        if (playerController.movesCounter == 0)
+        {
+            playerLose();
+        }
+    }
+
     public void noTimeLeft()
     {
         if (timer.TimeLeft == 0f)
@@ -76,34 +84,7 @@ public class UnitManager : MonoBehaviour
 
     public void playerWin()
     {
-        //playerPoints.playerPoints += 1;
-
         SceneManager.LoadScene("WinScene");
-
-        //if (playerPoints.playerPoints == 1)
-        //{
-        //    SceneManager.LoadScene("Level2");
-        //}
-
-        //if (playerPoints.playerPoints == 2)
-        //{
-        //    SceneManager.LoadScene("Level3");
-        //}
-
-        //if (playerPoints.playerPoints == 3)
-        //{
-        //    SceneManager.LoadScene("Level4");
-        //}
-
-        //if (playerPoints.playerPoints == 4)
-        //{
-        //    SceneManager.LoadScene("Level5");
-        //}
-
-        //if (playerPoints.playerPoints == 5)
-        //{
-        //    SceneManager.LoadScene("MenuScene");
-        //}
     }
 
     public void playerLose()

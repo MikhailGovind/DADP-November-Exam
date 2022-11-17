@@ -23,6 +23,9 @@ public class CustomGrid : ScriptableObject
     private List<Vector2> pits = new List<Vector2>();
 
     [SerializeField]
+    private List<Vector2> winTiles = new List<Vector2>();
+
+    [SerializeField]
     private List<Vector3> obstacles = new List<Vector3>();
 
     public int Width { get => width; }
@@ -34,6 +37,8 @@ public class CustomGrid : ScriptableObject
     public List<Sprite> Sprites { get => sprites; }
 
     public List<Vector2> Pits { get => pits; }
+
+    public List<Vector2> WinTiles { get => winTiles; }
 
     public List<Vector3> Obstacles { get => obstacles; }
 

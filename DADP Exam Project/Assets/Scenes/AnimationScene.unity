@@ -2433,7 +2433,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1596249692
 Transform:
   m_ObjectHideFlags: 0
@@ -3012,6 +3012,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tilePrefab: {fileID: 2957781639688781753, guid: a720523a3e34ca043aac31bfd6b99e54, type: 3}
   pitPrefab: {fileID: 8741117473313214162, guid: 636bd27c3f6c31f4492e5162b5ee08ea, type: 3}
+  winTilePrefab: {fileID: 0}
   gridController: {fileID: 1240274070}
 --- !u!4 &2120468670
 Transform:
