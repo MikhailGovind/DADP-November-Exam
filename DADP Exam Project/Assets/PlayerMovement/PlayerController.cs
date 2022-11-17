@@ -23,6 +23,9 @@ public class PlayerController : MonoBehaviour
     public int playerMoves = 0; //variable for number of moves player has available
 
     [SerializeField]
+    public int movesCounter = 0; //variable for total nunmber of moves player has availabe for this level before losing
+
+    [SerializeField]
     public bool signal;
 
     private Vector2 Direction;
@@ -32,8 +35,12 @@ public class PlayerController : MonoBehaviour
     public SpriteRenderer spriteRenderer;
 
     public TextMeshProUGUI playerMovesText;
+    public TextMeshProUGUI movesCounterText;
 
     public bool playerAlive;
+
+    [field: SerializeField]
+    public UnitManager unitManager { get; private set; }
 
     public Vector2 PlayerPosition { get; private set; }
     public RoughTile PlayerTile { get; private set; }
@@ -75,7 +82,8 @@ public class PlayerController : MonoBehaviour
         {
             if (CanMove(direction)) //check if the player avatar is colliding with the collision layer or not
             {
-                playerMoves--;  
+                playerMoves--;
+                movesCounter--;
                 transform.position += (Vector3)direction;
                 PlayerPosition = transform.position;
                 PlayerTile = GridManager.gridTiles[PlayerPosition];
@@ -116,13 +124,14 @@ public class PlayerController : MonoBehaviour
 
             animator.SetBool("isWalking", false); //set walking to false to return back to idle
         }
+        
+        if (movesCounter <= 0)
+        {
+            movesCounter = 0; //if less than 0, equate it to 0 
+        }
 
         playerMovesText.text = "" + playerMoves; //sets text to number of player moves available
-
-        //if (playerAlive == false)
-        //{
-        //    SceneManager.LoadScene("LoseScene");
-        //}
+        movesCounterText.text = "" + movesCounter; //sets text to number left on move counter
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -130,7 +139,13 @@ public class PlayerController : MonoBehaviour
         if (other.tag == "Enemy")
         {
             Debug.Log("he's touching me");
-            //playerAlive = false;
+            playerAlive = false;
+        }
+
+        if(other.tag == "WinBlock")
+        {
+            Debug.Log("Winner");
+            unitManager.playerWin();
         }
     }
 }

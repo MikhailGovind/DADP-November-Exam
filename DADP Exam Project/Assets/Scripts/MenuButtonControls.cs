@@ -5,23 +5,51 @@ using UnityEngine.SceneManagement;
 
 public class MenuButtonControls : MonoBehaviour
 {
-  public void WinScene()  // General code to load the win or lose scenes
-  {
+    [field: SerializeField]
+    public PlayerPoints playerPoints { get; private set; }
+
+    public void WinScene()  // General code to load the win or lose scenes
+    {
     SceneManager.LoadScene("WinScene");
-  }
+    }
 
-  public void MainMenu()  // Loads the Menu scene
-  {
+    public void LoseScene()
+    {
+        SceneManager.LoadScene("LoseScene");
+    }
+
+    public void MainMenu()  // Loads the Menu scene
+    {
     SceneManager.LoadScene("MenuScene");
-  }
+    }
 
-  public void SampleScene()  // Loads the Game scene
-  {
-    SceneManager.LoadScene("SampleScene");
-  }
+    public void Level_1()  // Loads the Menu scene
+    {
+        SceneManager.LoadScene("Level1");
+    }
 
-  public void QuitGame()  // Quits and exits the game
-  {
+    public void Level_2()  // Loads the Menu scene
+    {
+        SceneManager.LoadScene("Level2");
+    }
+
+    public void Level_3()  // Loads the Menu scene
+    {
+        SceneManager.LoadScene("Level3");
+    }
+
+    public void Level_4()  // Loads the Menu scene
+    {
+        SceneManager.LoadScene("Level4");
+    }
+
+    public void Level_5()  // Loads the Menu scene
+    {
+        SceneManager.LoadScene("Level5");
+    }
+
+    public void QuitGame()  // Quits and exits the game
+    {
     Application.Quit();
-  }
+    }
 }

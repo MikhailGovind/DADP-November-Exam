@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditorInternal;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UnitManager : MonoBehaviour
 {
@@ -11,9 +12,14 @@ public class UnitManager : MonoBehaviour
     [field: SerializeField]
     public PlayerController playerController { get; private set; }
 
-    
-    public float pacing = 2f;
+    [field: SerializeField]
+    public Timer timer { get; private set; }
 
+    [field: SerializeField]
+    public PlayerPoints playerPoints { get; private set; }
+
+
+    public float pacing = 2f;
 
     public void PlayerTurn()
     {
@@ -52,6 +58,37 @@ public class UnitManager : MonoBehaviour
 
     }
 
+    public void noMovesLeft()
+    {
+        if (playerController.movesCounter == 0)
+        {
+            playerLose();
+        }
+    }
 
+    public void noTimeLeft()
+    {
+        if (timer.TimeLeft == 0f)
+        {
+            playerWin();
+        }
+    }
 
+    private void Update()
+    {
+        if (playerController.PlayerPosition == enemyController.EnemyPosition)
+        {
+            playerLose();
+        }
+    }
+
+    public void playerWin()
+    {
+        SceneManager.LoadScene("WinScene");
+    }
+
+    public void playerLose()
+    {
+        SceneManager.LoadScene("LoseScene");
+    }
 }

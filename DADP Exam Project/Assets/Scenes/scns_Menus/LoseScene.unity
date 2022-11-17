@@ -1153,7 +1153,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2033259559}
         m_TargetAssemblyTypeName: MenuButtonControls, Assembly-CSharp
-        m_MethodName: MainMenu
+        m_MethodName: Retry
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1393,3 +1393,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9161902a6098397438eb1c6a07e423ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <unitManager>k__BackingField: {fileID: 0}
+  <playerPoints>k__BackingField: {fileID: 0}

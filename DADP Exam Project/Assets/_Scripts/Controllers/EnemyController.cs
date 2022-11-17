@@ -15,6 +15,8 @@ public class EnemyController : MonoBehaviour
 
     public RoughTile EnemyTile { get; private set; }
 
+    public bool enemyAlive;
+
     private void Start()
     {
         EnemyPosition = this.transform.position;
