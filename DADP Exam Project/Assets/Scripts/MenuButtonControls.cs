@@ -13,37 +13,39 @@ public class MenuButtonControls : MonoBehaviour
     SceneManager.LoadScene("WinScene");
     }
 
+    public void LoseScene()
+    {
+        SceneManager.LoadScene("LoseScene");
+    }
+
     public void MainMenu()  // Loads the Menu scene
     {
     SceneManager.LoadScene("MenuScene");
     }
 
-    public void Retry()  // Loads the Game scene
+    public void Level_1()  // Loads the Menu scene
     {
-        if (playerPoints.playerPoints == 1)
-        {
-            SceneManager.LoadScene("Level2");
-        }
+        SceneManager.LoadScene("Level1");
+    }
 
-        if (playerPoints.playerPoints == 2)
-        {
-            SceneManager.LoadScene("Level3");
-        }
+    public void Level_2()  // Loads the Menu scene
+    {
+        SceneManager.LoadScene("Level2");
+    }
 
-        if (playerPoints.playerPoints == 3)
-        {
-            SceneManager.LoadScene("Level4");
-        }
+    public void Level_3()  // Loads the Menu scene
+    {
+        SceneManager.LoadScene("Level3");
+    }
 
-        if (playerPoints.playerPoints == 4)
-        {
-            SceneManager.LoadScene("Level5");
-        }
+    public void Level_4()  // Loads the Menu scene
+    {
+        SceneManager.LoadScene("Level4");
+    }
 
-        if (playerPoints.playerPoints == 5)
-        {
-            SceneManager.LoadScene("MenuScene");
-        }
+    public void Level_5()  // Loads the Menu scene
+    {
+        SceneManager.LoadScene("Level5");
     }
 
     public void QuitGame()  // Quits and exits the game
