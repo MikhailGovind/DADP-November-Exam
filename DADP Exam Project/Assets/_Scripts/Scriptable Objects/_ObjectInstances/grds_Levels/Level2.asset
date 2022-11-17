@@ -26,6 +26,13 @@ MonoBehaviour:
   - {fileID: 6938447000329346084, guid: f1ed01f12ff04484a9c203455710611b, type: 3}
   - {fileID: 2445345339855577983, guid: f1ed01f12ff04484a9c203455710611b, type: 3}
   - {fileID: 8507735724282514917, guid: f1ed01f12ff04484a9c203455710611b, type: 3}
-  pits: []
+  pits:
+  - {x: 10, y: 6}
+  - {x: 5, y: 4}
+  - {x: 4, y: 5}
+  - {x: 3, y: 3}
   winTiles: []
-  obstacles: []
+  obstacles:
+  - {x: 9, y: 10, z: 1}
+  - {x: 3, y: 7, z: 1}
+  - {x: 7, y: 2, z: 1}
