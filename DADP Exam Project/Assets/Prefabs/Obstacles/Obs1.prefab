@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 4720387961234706000}
   - component: {fileID: 4720387961234706007}
   - component: {fileID: 4720387961234706001}
+  - component: {fileID: -6561896733883607647}
   m_Layer: 0
   m_Name: Obs1
-  m_TagString: Untagged
+  m_TagString: BlockObstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96,3 +97,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstacle: {fileID: 11400000, guid: e49e5dd9d04441249a4ef4500e1ed120, type: 2}
+--- !u!114 &-6561896733883607647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4720387961234706006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50c00d0dbd824234089bc80f9d7d86f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
