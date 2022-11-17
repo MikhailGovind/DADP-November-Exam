@@ -14,6 +14,7 @@ public class Obstacle : ScriptableObject
     [SerializeField]
     private List<Sprite> sprites = new List<Sprite>();
 
+
     public enum ObstacleType
     {
         type1 = 1, // 1 block
@@ -31,5 +32,35 @@ public class Obstacle : ScriptableObject
     public bool Movable { get => movable; }
 
     public List<Sprite> Sprites { get => sprites; }
+
+    public void CheckType()
+    {
+        switch (obstacleType)
+        {
+            case ObstacleType.type1:
+                
+                break;
+            case ObstacleType.type2:
+                
+                break;
+            case ObstacleType.type3:
+               
+                break;
+            case ObstacleType.type4:
+                
+                break;
+            case ObstacleType.type5:
+                
+                break;
+
+        }
+    }
+
+    
+    
+  
+
+    
+
 
 }

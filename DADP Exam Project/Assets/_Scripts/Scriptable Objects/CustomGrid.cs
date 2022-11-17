@@ -25,6 +25,8 @@ public class CustomGrid : ScriptableObject
     [SerializeField]
     private List<Vector3> obstacles = new List<Vector3>();
 
+   
+
     public int Width { get => width; }
 
     public int Height { get => height; }
@@ -36,5 +38,7 @@ public class CustomGrid : ScriptableObject
     public List<Vector2> Pits { get => pits; }
 
     public List<Vector3> Obstacles { get => obstacles; }
+
+  
 
 }
