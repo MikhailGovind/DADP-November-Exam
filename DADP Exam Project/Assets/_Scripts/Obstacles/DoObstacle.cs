@@ -20,11 +20,6 @@ public class DoObstacle : MonoBehaviour
         TeleportObstacles = GameObject.FindGameObjectsWithTag("TeleportObstacles");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     public bool Move(Vector2 direction)
     {
         //To move when player interacts with it.
