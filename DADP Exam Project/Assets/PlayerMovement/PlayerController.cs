@@ -37,8 +37,6 @@ public class PlayerController : MonoBehaviour
     public TextMeshProUGUI playerMovesText;
     public TextMeshProUGUI movesCounterText;
 
-    public bool playerAlive;
-
     private bool ReadyToMove;
 
     //object variables
@@ -80,7 +78,6 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerAlive = true;
         PlayerPosition = this.transform.position;
         PlayerTile = GridManager.gridTiles[PlayerPosition];
         //signal = false;
@@ -173,15 +170,13 @@ public class PlayerController : MonoBehaviour
         playerMovesText.text = "" + playerMoves; //sets text to number of player moves available
         movesCounterText.text = "" + movesCounter; //sets text to number left on move counter
     }
-
-    ///////////////////////////////////////////////////////// obstacle stuff
     
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Enemy")
         {
             Debug.Log("he's touching me");
-            playerAlive = false;
+            unitManager.playerLose();
         }
 
         if(other.tag == "WinBlock")
@@ -190,6 +185,8 @@ public class PlayerController : MonoBehaviour
             unitManager.playerWin();
         }
     }
+
+    ///////////////////////////////////////////////////////// obstacle stuff
 
     public bool objectMove(Vector2 direction)
     {

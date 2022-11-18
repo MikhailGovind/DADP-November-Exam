@@ -7,6 +7,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2957781639688781753, guid: a720523a3e34ca043aac31bfd6b99e54, type: 3}
+      propertyPath: <WinTile>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2957781639688781753, guid: a720523a3e34ca043aac31bfd6b99e54, type: 3}
+      propertyPath: <Walkable>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4477318216094889853, guid: a720523a3e34ca043aac31bfd6b99e54, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -54,6 +62,10 @@ PrefabInstance:
     - target: {fileID: 4480471311046304602, guid: a720523a3e34ca043aac31bfd6b99e54, type: 3}
       propertyPath: m_Name
       value: WinTile
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480471311046304602, guid: a720523a3e34ca043aac31bfd6b99e54, type: 3}
+      propertyPath: m_TagString
+      value: WinBlock
       objectReference: {fileID: 0}
     - target: {fileID: 5215927089542999272, guid: a720523a3e34ca043aac31bfd6b99e54, type: 3}
       propertyPath: m_Sprite

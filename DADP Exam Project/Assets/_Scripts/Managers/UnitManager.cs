@@ -62,14 +62,6 @@ public class UnitManager : MonoBehaviour
         playerLose();
     }
 
-    private void Update()
-    {
-        if (playerController.PlayerPosition == enemyController.EnemyPosition) //when the player and enemy are in the same position
-        {
-            playerLose();
-        }
-    }
-
     //load win scene
     public void playerWin()
     {

@@ -21,6 +21,9 @@ public class RoughTile : BasicTile
     public bool Pit { get; private set; } // Check if the tile is a pit
 
     [field:SerializeField]
+    public bool WinTile { get; private set; } // Check if the tile is a win tile
+
+    [field:SerializeField]
     private GameObject ObjectSlot { get; set; } // Slot to place unit/obstacle in - remember to update SpriteRenderer to show occupier
 
     [SerializeField]
@@ -41,11 +44,15 @@ public class RoughTile : BasicTile
     // nature of environment more obvious to player
     public void Init(bool isOffset)
     {
-        if(!Pit)
-        { 
-            spriteRenderer.color = isOffset ? offsetColor : baseColor; 
+        if (!Pit)
+        {
+            spriteRenderer.color = isOffset ? offsetColor : baseColor;
         }
-        
+
+        if (!WinTile)
+        {
+            spriteRenderer.color = isOffset ? offsetColor : baseColor;
+        }
     }
 
     public void SetGridPosition(Vector2 pos)

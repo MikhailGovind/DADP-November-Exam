@@ -15,8 +15,11 @@ public class EnemyController : MonoBehaviour
 
     public RoughTile EnemyTile { get; private set; }
 
+    public bool enemyAlive;
+
     private void Start()
     {
+        enemyAlive = true;
         EnemyPosition = this.transform.position;
         EnemyTile = GridManager.gridTiles[EnemyPosition];
         PlayerPosition = unitManager.playerController.PlayerPosition;
@@ -53,9 +56,6 @@ public class EnemyController : MonoBehaviour
             tile.PathNode.GetComponent<TextMeshPro>().enabled = false;
         }
     }
-
-    
-
 
     public RoughTile LeastResistance()
     {
@@ -94,11 +94,19 @@ public class EnemyController : MonoBehaviour
         EnemyTile = GridManager.gridTiles[EnemyPosition];
     }
 
-
-
     public void EnemyMove(Vector2 Target)
     {
         HPathCalibration(Target);
         Move(LeastResistance());
+    }
+
+
+
+    private void Update()
+    {
+        if (enemyAlive == false)
+        {
+            unitManager.playerWin();
+        }
     }
 }

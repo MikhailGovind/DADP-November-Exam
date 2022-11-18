@@ -28,9 +28,11 @@ MonoBehaviour:
   - {fileID: 8507735724282514917, guid: f1ed01f12ff04484a9c203455710611b, type: 3}
   pits:
   - {x: 10, y: 6}
-  - {x: 5, y: 4}
-  - {x: 4, y: 5}
   - {x: 3, y: 3}
+  - {x: 4, y: 5}
+  - {x: 5, y: 5}
+  - {x: 5, y: 4}
+  - {x: 4, y: 4}
   winTiles:
   - {x: 2, y: 0}
   obstacles:
