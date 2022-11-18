@@ -12,12 +12,6 @@ public class UnitManager : MonoBehaviour
     [field: SerializeField]
     public PlayerController playerController { get; private set; }
 
-    [field: SerializeField]
-    public Timer timer { get; private set; }
-
-    [field: SerializeField]
-    public PlayerPoints playerPoints { get; private set; }
-
 
     public float pacing = 2f;
 
@@ -38,8 +32,6 @@ public class UnitManager : MonoBehaviour
         StartCoroutine(TimerMove((float)pacing*2));
         StartCoroutine(TimerMove((float)pacing*3));
         StartCoroutine(TimerTurn((float)pacing*4));
-        
-        
     }
 
     
@@ -58,35 +50,33 @@ public class UnitManager : MonoBehaviour
 
     }
 
+    //function for when the player has no moves left on the move counter
     public void noMovesLeft()
     {
-        if (playerController.movesCounter == 0)
-        {
-            playerLose();
-        }
+        playerLose();
     }
 
+    //function for when the timer runs out
     public void noTimeLeft()
     {
-        if (timer.TimeLeft == 0f)
-        {
-            playerWin();
-        }
+        playerLose();
     }
 
     private void Update()
     {
-        if (playerController.PlayerPosition == enemyController.EnemyPosition)
+        if (playerController.PlayerPosition == enemyController.EnemyPosition) //when the player and enemy are in the same position
         {
             playerLose();
         }
     }
 
+    //load win scene
     public void playerWin()
     {
         SceneManager.LoadScene("WinScene");
     }
 
+    //load lose scene
     public void playerLose()
     {
         SceneManager.LoadScene("LoseScene");

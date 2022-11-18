@@ -15,8 +15,6 @@ public class EnemyController : MonoBehaviour
 
     public RoughTile EnemyTile { get; private set; }
 
-    public bool enemyAlive;
-
     private void Start()
     {
         EnemyPosition = this.transform.position;
@@ -91,7 +89,6 @@ public class EnemyController : MonoBehaviour
 
     public void Move(RoughTile NewTile)
     {
-        
         this.transform.position = NewTile.transform.position;
         EnemyPosition = this.transform.position;
         EnemyTile = GridManager.gridTiles[EnemyPosition];
@@ -103,14 +100,5 @@ public class EnemyController : MonoBehaviour
     {
         HPathCalibration(Target);
         Move(LeastResistance());
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.tag == "Player")
-        {
-            Debug.Log("i'm touching him");
-            //playerAlive = false;
-        }
     }
 }

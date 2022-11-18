@@ -288,7 +288,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitManager: {fileID: 1551402350}
-  enemyAlive: 0
 --- !u!61 &157931114
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2530,7 +2529,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9161902a6098397438eb1c6a07e423ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <playerPoints>k__BackingField: {fileID: 0}
 --- !u!114 &1507493266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2748,8 +2746,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <enemyController>k__BackingField: {fileID: 157931113}
   <playerController>k__BackingField: {fileID: 1551485466}
-  <timer>k__BackingField: {fileID: 1507493263}
-  <playerPoints>k__BackingField: {fileID: 1771587528}
   pacing: 2
 --- !u!1 &1551485465
 GameObject:
@@ -2790,7 +2786,8 @@ MonoBehaviour:
   playerMovesText: {fileID: 1750455983}
   movesCounterText: {fileID: 1468261790}
   playerAlive: 0
-  <unitManager>k__BackingField: {fileID: 0}
+  <unitManager>k__BackingField: {fileID: 1551402350}
+  <timer>k__BackingField: {fileID: 1507493263}
 --- !u!61 &1551485467
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3028,7 +3025,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9aa603b782467d43852acc8bdb06b36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPoints: 0
 --- !u!4 &1771587529
 Transform:
   m_ObjectHideFlags: 0
@@ -3189,7 +3185,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2099276266
 RectTransform:
   m_ObjectHideFlags: 0

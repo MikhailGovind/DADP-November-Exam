@@ -39,6 +39,8 @@ public class PlayerController : MonoBehaviour
 
     public bool playerAlive;
 
+    private bool ReadyToMove;
+
     //object variables
     private GameObject[] BlockObstacles;
     private GameObject[] PushObstacles;
@@ -46,20 +48,19 @@ public class PlayerController : MonoBehaviour
     private GameObject[] ExplodeObstacles;
     private GameObject[] TeleportObstacles;
 
-    private bool ReadyToMove;
-
-
-
     [field: SerializeField]
     public UnitManager unitManager { get; private set; }
 
+    [field: SerializeField]
+    public Timer timer { get; private set; }
+
     public Vector2 PlayerPosition { get; private set; }
+
     public RoughTile PlayerTile { get; private set; }
 
     private void Awake()
     {
         controls = new PlayerControls(); //initialising Player Controls
-
     }
 
     //enabling Player Controls
@@ -74,8 +75,7 @@ public class PlayerController : MonoBehaviour
         controls.Disable();
     }
 
-
-
+    /////////////////////////////////////////////////////////////////
 
     // Start is called before the first frame update
     void Start()
@@ -100,8 +100,8 @@ public class PlayerController : MonoBehaviour
         {
             if (CanMove(direction)) //check if the player avatar is colliding with the collision layer or not
             {
-                playerMoves--;
-                movesCounter--;
+                playerMoves--; //decrease moves per turn
+                movesCounter--; //decreases moves on move counter
                 transform.position += (Vector3)direction;
                 PlayerPosition = transform.position;
                 PlayerTile = GridManager.gridTiles[PlayerPosition];
@@ -155,16 +155,27 @@ public class PlayerController : MonoBehaviour
 
             animator.SetBool("isWalking", false); //set walking to false to return back to idle
         }
+
+        if (timer.TimeLeft <= 0)
+        {
+            timer.TimeLeft = 0; //if less than 0, equate it to 0
+
+            unitManager.noTimeLeft(); //call function in unit manager when no moves are left
+        }
         
         if (movesCounter <= 0)
         {
             movesCounter = 0; //if less than 0, equate it to 0 
+
+            unitManager.noMovesLeft(); //call function in unit manager when no moves are left
         }
 
         playerMovesText.text = "" + playerMoves; //sets text to number of player moves available
         movesCounterText.text = "" + movesCounter; //sets text to number left on move counter
     }
 
+    ///////////////////////////////////////////////////////// obstacle stuff
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Enemy")

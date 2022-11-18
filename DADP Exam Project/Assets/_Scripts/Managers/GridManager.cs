@@ -47,10 +47,10 @@ public class GridManager : MonoBehaviour
                 {
                     spawnedTile = Instantiate(pitPrefab, new Vector3(x, y), Quaternion.identity, gridObject.transform);
                 }
-                //else if (gridController.currentGrid.WinTiles.Contains(coordinates))
-                //{
-                //    spawnedTile = Instantiate(winTilePrefab, new Vector3(x, y), Quaternion.identity, gridObject.transform);
-                //}
+                else if (gridController.currentGrid.WinTiles.Contains(coordinates))
+                {
+                    spawnedTile = Instantiate(winTilePrefab, new Vector3(x, y), Quaternion.identity, gridObject.transform);
+                }
                 else 
                 {
                     spawnedTile = Instantiate(tilePrefab, new Vector3(x, y), Quaternion.identity, gridObject.transform);
