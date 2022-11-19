@@ -7,6 +7,11 @@ TagManager:
   - Tile
   - Enemy
   - WinBlock
+  - BlockObstacles
+  - PushObstacles
+  - BackPushObstacles
+  - ExplodeObstacles
+  - TeleportObstacles
   layers:
   - Default
   - TransparentFX

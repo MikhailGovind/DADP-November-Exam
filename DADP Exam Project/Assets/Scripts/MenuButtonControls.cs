@@ -5,9 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class MenuButtonControls : MonoBehaviour
 {
-    [field: SerializeField]
-    public PlayerPoints playerPoints { get; private set; }
-
     public void WinScene()  // General code to load the win or lose scenes
     {
     SceneManager.LoadScene("WinScene");
@@ -22,6 +19,8 @@ public class MenuButtonControls : MonoBehaviour
     {
     SceneManager.LoadScene("MenuScene");
     }
+
+    #region //level loads
 
     public void Level_1()  // Loads the Menu scene
     {
@@ -47,6 +46,8 @@ public class MenuButtonControls : MonoBehaviour
     {
         SceneManager.LoadScene("Level5");
     }
+
+    #endregion
 
     public void QuitGame()  // Quits and exits the game
     {

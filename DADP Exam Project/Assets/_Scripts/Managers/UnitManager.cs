@@ -10,13 +10,13 @@ public class UnitManager : MonoBehaviour
     public EnemyController enemyController { get; private set; }
 
     [field: SerializeField]
+    public EnemyController enemyController2 { get; private set; }
+
+    [field: SerializeField]
+    public EnemyController enemyController3 { get; private set; }
+
+    [field: SerializeField]
     public PlayerController playerController { get; private set; }
-
-    [field: SerializeField]
-    public Timer timer { get; private set; }
-
-    [field: SerializeField]
-    public PlayerPoints playerPoints { get; private set; }
 
 
     public float pacing = 2f;
@@ -38,8 +38,6 @@ public class UnitManager : MonoBehaviour
         StartCoroutine(TimerMove((float)pacing*2));
         StartCoroutine(TimerMove((float)pacing*3));
         StartCoroutine(TimerTurn((float)pacing*4));
-        
-        
     }
 
     
@@ -47,6 +45,9 @@ public class UnitManager : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(time);
         enemyController.EnemyMove(playerController.PlayerPosition);
+        enemyController2.EnemyMove(playerController.PlayerPosition);
+        enemyController3.EnemyMove(playerController.PlayerPosition);
+
         yield return null;
     }
 
@@ -58,35 +59,25 @@ public class UnitManager : MonoBehaviour
 
     }
 
+    //function for when the player has no moves left on the move counter
     public void noMovesLeft()
     {
-        if (playerController.movesCounter == 0)
-        {
-            playerLose();
-        }
+        playerLose();
     }
 
+    //function for when the timer runs out
     public void noTimeLeft()
     {
-        if (timer.TimeLeft == 0f)
-        {
-            playerWin();
-        }
+        playerLose();
     }
 
-    private void Update()
-    {
-        if (playerController.PlayerPosition == enemyController.EnemyPosition)
-        {
-            playerLose();
-        }
-    }
-
+    //load win scene
     public void playerWin()
     {
         SceneManager.LoadScene("WinScene");
     }
 
+    //load lose scene
     public void playerLose()
     {
         SceneManager.LoadScene("LoseScene");

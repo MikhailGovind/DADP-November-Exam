@@ -13,7 +13,6 @@ using UnityEngine.SceneManagement;
 // GameManager that controls flow of game and other manager classes 
 public class GameManager : MonoBehaviour
 {
-
     [SerializeField]
     public Camera myCamera;
 
@@ -33,12 +32,6 @@ public class GameManager : MonoBehaviour
         UpdateGameState(GameState.LevelSetup);
     }
 
-    private void Start()
-    {
-        
-    }
-
-
     // Function: Changes the current state of the game
     // and sets in motion the relevant changes
     public void UpdateGameState(GameState newState)
@@ -53,9 +46,11 @@ public class GameManager : MonoBehaviour
                 Debug.Log("LevelSetup");
                 UpdateGameState(GameState.PlayerTurn);
                 break;
+
             case (GameState.PlayerTurn):
                 unitManager.PlayerTurn();
                 break;
+
             case (GameState.EnemyTurn):
                 unitManager.pacing = 0.5f;
                 unitManager.EnemyTurn();

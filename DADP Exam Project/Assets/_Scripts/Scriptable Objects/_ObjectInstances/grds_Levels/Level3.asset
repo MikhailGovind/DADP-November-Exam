@@ -26,6 +26,23 @@ MonoBehaviour:
   - {fileID: 6938447000329346084, guid: f1ed01f12ff04484a9c203455710611b, type: 3}
   - {fileID: 2445345339855577983, guid: f1ed01f12ff04484a9c203455710611b, type: 3}
   - {fileID: 8507735724282514917, guid: f1ed01f12ff04484a9c203455710611b, type: 3}
-  pits: []
-  winTiles: []
-  obstacles: []
+  pits:
+  - {x: 3, y: 10}
+  - {x: 6, y: 10}
+  - {x: 10, y: 9}
+  - {x: 8, y: 1}
+  - {x: 0, y: 2}
+  - {x: 6, y: 4}
+  - {x: 1, y: 8}
+  winTiles:
+  - {x: 9, y: 1}
+  obstacles:
+  - {x: 3, y: 0, z: 5}
+  - {x: 2, y: 4, z: 5}
+  - {x: 5, y: 2, z: 1}
+  - {x: 5, y: 3, z: 1}
+  - {x: 6, y: 6, z: 4}
+  - {x: 8, y: 7, z: 2}
+  - {x: 8, y: 8, z: 1}
+  - {x: 5, y: 9, z: 1}
+  - {x: 4, y: 9, z: 1}

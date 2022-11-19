@@ -8,6 +8,7 @@ using UnityEditor;
 using UnityEngine;
 using TMPro;
 using System.Xml.XPath;
+using System.Linq;
 
 
 /* Class used for RoughTile Prefab and its variants 
@@ -17,11 +18,16 @@ public class RoughTile : BasicTile
     [field:SerializeField]
     public bool Walkable { get; private set; } // Check if the tile is walkable for units
 
+    
+
     [field:SerializeField]
     public bool Pit { get; private set; } // Check if the tile is a pit
 
     [field:SerializeField]
-    private GameObject ObjectSlot { get; set; } // Slot to place unit/obstacle in - remember to update SpriteRenderer to show occupier
+    public bool WinTile { get; private set; } // Check if the tile is a win tile
+
+    [field:SerializeField]
+    public GameObject ObjectSlot { get; set; } // Slot to place unit/obstacle in - remember to update SpriteRenderer to show occupier
 
     [SerializeField]
     public GameObject PathNode;
@@ -41,11 +47,15 @@ public class RoughTile : BasicTile
     // nature of environment more obvious to player
     public void Init(bool isOffset)
     {
-        if(!Pit)
-        { 
-            spriteRenderer.color = isOffset ? offsetColor : baseColor; 
+        if (!Pit)
+        {
+            spriteRenderer.color = isOffset ? offsetColor : baseColor;
         }
-        
+
+        if (!WinTile)
+        {
+            spriteRenderer.color = isOffset ? offsetColor : baseColor;
+        }
     }
 
     public void SetGridPosition(Vector2 pos)
@@ -64,13 +74,33 @@ public class RoughTile : BasicTile
         return (!(ObjectSlot.activeSelf) && ObjectSlot.transform.childCount == 0);
     }
 
+    public bool CheckIfObject()
+    {
+        ObstacleData[] obstacles = ObjectSlot.GetComponentsInChildren<ObstacleData>();
+        if (obstacles.Length == 0)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+
+    }
+
+    public ObstacleData GetObstacle()
+    {
+        return ObjectSlot.GetComponentInChildren<ObstacleData>();
+    }
+
     public void SetObstacleInSlot(GameObject obs, int no)
     {
         if (!CheckSlotEmpty()) { return; }
         Obstacle Obs = obs.GetComponent<ObstacleData>().GetObstacleData();
 
         ObjectSlot.SetActive(true);
-        this.Walkable = false;
+        if (!Obs.Movable) { this.Walkable = false; }
+        if (Obs.Movable) { this.Walkable = true; }
 
         switch (Obs.ObsType)
         {
@@ -101,6 +131,8 @@ public class RoughTile : BasicTile
                 temp1.transform.localPosition = Vector3.zero;
                 temp1.GetComponent<SpriteRenderer>().sprite = obs.GetComponent<ObstacleData>().GetObstacleData().Sprites[1];
                 temp1.GetComponent<SpriteRenderer>().sortingOrder = 1;
+
+                if (Obs.Movable) {other_tile.Walkable = true; }
                 break;
 
             case Obstacle.ObstacleType.type5:

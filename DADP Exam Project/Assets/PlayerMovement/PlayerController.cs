@@ -10,6 +10,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using System.Linq;
 
 public class PlayerController : MonoBehaviour
 {
@@ -28,7 +29,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     public bool signal;
 
-    private Vector2 Direction;
+    //private Vector2 Direction;
+
 
     //animation variables
     public Animator animator;
@@ -37,18 +39,23 @@ public class PlayerController : MonoBehaviour
     public TextMeshProUGUI playerMovesText;
     public TextMeshProUGUI movesCounterText;
 
-    public bool playerAlive;
+    private bool ReadyToMove;
+
+   
 
     [field: SerializeField]
     public UnitManager unitManager { get; private set; }
 
+    [field: SerializeField]
+    public Timer timer { get; private set; }
+
     public Vector2 PlayerPosition { get; private set; }
+
     public RoughTile PlayerTile { get; private set; }
 
     private void Awake()
     {
         controls = new PlayerControls(); //initialising Player Controls
-
     }
 
     //enabling Player Controls
@@ -63,34 +70,41 @@ public class PlayerController : MonoBehaviour
         controls.Disable();
     }
 
-
-
+    /////////////////////////////////////////////////////////////////
 
     // Start is called before the first frame update
     void Start()
     {
-        playerAlive = true;
         PlayerPosition = this.transform.position;
         PlayerTile = GridManager.gridTiles[PlayerPosition];
         //signal = false;
+
+        
+
         controls.Main.Movement.performed += ctx => Move(ctx.ReadValue<Vector2>()); //finding values for whenever the player avatar moves. Reading Vector2 values when performed
+
+        
+        
     }
 
     private void Move(Vector2 direction)
     {
         if (playerMoves >= 1) //only allow player to move if they have a move available
         {
-            if (CanMove(direction)) //check if the player avatar is colliding with the collision layer or not
+            if (CanMove(direction) && MoveObstacle((Vector2)transform.position + direction, direction) == 1) //check if the player avatar is colliding with the collision layer or not
             {
-                playerMoves--;
-                movesCounter--;
+                playerMoves--; //decrease moves per turn
+                movesCounter--; //decreases moves on move counter
+                
                 transform.position += (Vector3)direction;
                 PlayerPosition = transform.position;
                 PlayerTile = GridManager.gridTiles[PlayerPosition];
 
                 animator.SetBool("isWalking", true); //set walking to true
             }
-        } 
+        }
+
+        
 
         //set direction of sprite to movement direction 
         if (direction.x < 0) //left
@@ -114,6 +128,67 @@ public class PlayerController : MonoBehaviour
         return GridManager.gridTiles[transform.position + (Vector3)direction].Walkable; //if not, allow movement
     }
 
+
+    public int MoveObstacle(Vector2 position, Vector2 direction)
+    {
+        if(GridManager.gridTiles[position].CheckSlotEmpty() && !GridManager.gridTiles[position].CheckIfObject())
+        {
+            return 1;
+        }
+        else
+        {
+            ObstacleData ObstacleHolder = GridManager.gridTiles[position].GetObstacle();
+            GameObject Obstacle = ObstacleHolder.gameObject;
+
+            Vector2[] EnemyPositions = new Vector2[10];
+            for(int k =0; k<EnemyPositions.Length; k++)
+            {
+                EnemyPositions[k] = Vector2.negativeInfinity;
+            }
+            
+            int counter2 = 0;
+            foreach(GameObject entry in GameObject.FindGameObjectsWithTag("Enemy"))
+            {
+                EnemyPositions[counter2] = (Vector2) entry.transform.position;
+                counter2++;
+            }
+
+            Vector2 destination = position + direction;
+            GridManager gridRef = GameManager.Instance.gridManager;
+            if (ObstacleHolder.GetObstacleData().Movable && ObstacleHolder.GetObstacleData().Blocks==1 && GameManager.Instance.gridManager.GetTileAtPositionSpecial(position + direction).CheckSlotEmpty() && !EnemyPositions.Contains(destination)) 
+            {
+                GameManager.Instance.gridManager.GetTileAtPositionSpecial(position + direction).ObjectSlot.SetActive(true);
+                GameObject Clone = Instantiate(Obstacle, GameManager.Instance.gridManager.GetTileAtPositionSpecial(position + direction).ObjectSlot.transform);
+                Clone.name = Obstacle.name;
+                Destroy(Obstacle);
+                GameManager.Instance.gridManager.GetTileAtPositionSpecial(position).ObjectSlot.SetActive(false);
+                return 1;
+            }
+            //else if (ObstacleHolder.GetObstacleData().Movable && ObstacleHolder.GetObstacleData().Blocks == 2 && (GameManager.Instance.gridManager.GetTileAtPositionSpecial(position + direction).CheckSlotEmpty() || GameManager.Instance.gridManager.GetTileAtPositionSpecial(position + direction).GetObstacle().GetObstacleData().ObsType == (Obstacle.ObstacleType)3) &&!EnemyPositions.Contains(destination))
+            //{
+            //    if(direction == Vector2.left)
+            //    {
+            //        gridRef.
+            //    }
+                
+            //    if(direction == Vector2.right)
+            //    {
+
+            //    }
+
+
+                
+            //    return 1;
+            //}
+            else
+            {
+                return -1;
+            }
+            
+        }
+        
+    }
+
     private void Update()
     {
         if (playerMoves <= 0 && signal) //check if moves if less than 0
@@ -124,22 +199,31 @@ public class PlayerController : MonoBehaviour
 
             animator.SetBool("isWalking", false); //set walking to false to return back to idle
         }
+
+        if (timer.TimeLeft <= 0)
+        {
+            timer.TimeLeft = 0; //if less than 0, equate it to 0
+
+            unitManager.noTimeLeft(); //call function in unit manager when no moves are left
+        }
         
         if (movesCounter <= 0)
         {
             movesCounter = 0; //if less than 0, equate it to 0 
+
+            unitManager.noMovesLeft(); //call function in unit manager when no moves are left
         }
 
         playerMovesText.text = "" + playerMoves; //sets text to number of player moves available
         movesCounterText.text = "" + movesCounter; //sets text to number left on move counter
     }
-
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Enemy")
         {
             Debug.Log("he's touching me");
-            playerAlive = false;
+            unitManager.playerLose();
         }
 
         if(other.tag == "WinBlock")
@@ -148,4 +232,6 @@ public class PlayerController : MonoBehaviour
             unitManager.playerWin();
         }
     }
+
+   
 }

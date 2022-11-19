@@ -580,7 +580,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 585.15, y: -243}
+  m_AnchoredPosition: {x: 585.15, y: -449}
   m_SizeDelta: {x: 523.05, y: 178.65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &885026123
@@ -1362,7 +1362,7 @@ MonoBehaviour:
 
 
     "We have released you from hydrostasis. Aliens have boarded
-    the different floors of your spacecraft. Clear the floor how you see fit."'
+    the different floors of your spacecraft. Eliminate them."'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
@@ -1599,10 +1599,12 @@ MonoBehaviour:
   m_text: 'HQ:
 
 
-    "You can clear floors by sometimes killing them, getting to
-    the blue block will engage the sanitizing system which should have the same effect.
-    Some aliens will get tired chasing you and perish. Your mission is to annihilate
-    them."'
+    "You must step on the tile with the blue circle to engage the
+    the sanitizing system that will eliminate them. Crates that are one tile big
+    are movable and from our research will block the aliens. The others may be too
+    big. Watch out for holes torn in the floor. You might engage defense mechanism
+    on certain floors, look out for that. This is your mission. Move with "WASD"
+    and if they touch you, you will die! HQ out!"'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
