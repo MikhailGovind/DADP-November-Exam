@@ -66,6 +66,10 @@ public class GridManager : MonoBehaviour
                 }
                 spawnedTile.SetGridPosition(new Vector2(x, y));
                 spawnedTile.setDebugText($"{x}|{y}", false);
+                var isOffset = ((x % 2 == 0 && y % 2 != 0) || (x % 2 != 0 && y % 2 == 0)) && normalTile;
+                
+
+
                 if (normalTile && x == 0 && y == 0) // bottom left corner
                 {
                     spawnedTile.GetComponent<SpriteRenderer>().sprite = gridController.currentGrid.Sprites[6];
@@ -97,10 +101,10 @@ public class GridManager : MonoBehaviour
                 else if (normalTile && y == grid_height - 1) // top side
                 {
                     spawnedTile.GetComponent<SpriteRenderer>().sprite = gridController.currentGrid.Sprites[1];
+                    
                 }
 
 
-                var isOffset = (x % 2 == 0 && y % 2 != 0) || (x % 2 != 0 && y % 2 == 0);
                 spawnedTile.Init(isOffset);
 
 
@@ -114,13 +118,26 @@ public class GridManager : MonoBehaviour
     // grid -> method to interact with dictionary of tiles
     public RoughTile GetTileAtPosition(Vector2 position)
     {
-        position = new Vector2(position.x%(grid_width),position.y%(grid_height));
-        if(gridTiles.TryGetValue(position, out var tile)){
-            return tile;
-        }
-        return null;
+       
+        position = new Vector2(position.x%(grid_width), position.y%(grid_height));
+        return gridTiles[position];
     }
 
+    public RoughTile GetTileAtPositionSpecial(Vector2 position)
+    {
+        if(position.x<0)
+        {
+            position.x = grid_width-1;
+        }
+        if(position.y<0)
+        {
+            position.y = grid_height - 1;
+        }
+
+        position = new Vector2(position.x % (grid_width), position.y % (grid_height));
+
+        return gridTiles[position];
+    }
 
     public void ObstaclePlacement()
     {

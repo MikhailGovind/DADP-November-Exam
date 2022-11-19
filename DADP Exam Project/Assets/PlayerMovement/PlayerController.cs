@@ -10,6 +10,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using System.Linq;
 
 public class PlayerController : MonoBehaviour
 {
@@ -28,7 +29,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     public bool signal;
 
-    private Vector2 Direction;
+    //private Vector2 Direction;
+
 
     //animation variables
     public Animator animator;
@@ -39,12 +41,7 @@ public class PlayerController : MonoBehaviour
 
     private bool ReadyToMove;
 
-    //object variables
-    private GameObject[] BlockObstacles;
-    private GameObject[] PushObstacles;
-    private GameObject[] BackPushObstacles;
-    private GameObject[] ExplodeObstacles;
-    private GameObject[] TeleportObstacles;
+   
 
     [field: SerializeField]
     public UnitManager unitManager { get; private set; }
@@ -81,24 +78,24 @@ public class PlayerController : MonoBehaviour
         PlayerPosition = this.transform.position;
         PlayerTile = GridManager.gridTiles[PlayerPosition];
         //signal = false;
+
+        
+
         controls.Main.Movement.performed += ctx => Move(ctx.ReadValue<Vector2>()); //finding values for whenever the player avatar moves. Reading Vector2 values when performed
 
-        //obstacles have to have these  tags
-        BlockObstacles = GameObject.FindGameObjectsWithTag("BlockObstacles");
-        PushObstacles = GameObject.FindGameObjectsWithTag("PushObstacles");
-        BackPushObstacles = GameObject.FindGameObjectsWithTag("BackPushObstacles");
-        ExplodeObstacles = GameObject.FindGameObjectsWithTag("ExplodeObstacles");
-        TeleportObstacles = GameObject.FindGameObjectsWithTag("TeleportObstacles");
+        
+        
     }
 
     private void Move(Vector2 direction)
     {
         if (playerMoves >= 1) //only allow player to move if they have a move available
         {
-            if (CanMove(direction)) //check if the player avatar is colliding with the collision layer or not
+            if (CanMove(direction) && MoveObstacle((Vector2)transform.position + direction, direction) == 1) //check if the player avatar is colliding with the collision layer or not
             {
                 playerMoves--; //decrease moves per turn
                 movesCounter--; //decreases moves on move counter
+                
                 transform.position += (Vector3)direction;
                 PlayerPosition = transform.position;
                 PlayerTile = GridManager.gridTiles[PlayerPosition];
@@ -107,18 +104,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (direction.sqrMagnitude > 0.5)
-        {
-            if (ReadyToMove)
-            {
-                ReadyToMove = false;
-                objectMove(direction);
-            }
-        }
-        else
-        {
-            ReadyToMove = true;
-        }
+        
 
         //set direction of sprite to movement direction 
         if (direction.x < 0) //left
@@ -140,6 +126,45 @@ public class PlayerController : MonoBehaviour
             return false; //if there is a tile, do not allow movement
 
         return GridManager.gridTiles[transform.position + (Vector3)direction].Walkable; //if not, allow movement
+    }
+
+
+    public int MoveObstacle(Vector2 position, Vector2 direction)
+    {
+        if(GridManager.gridTiles[position].CheckSlotEmpty() && !GridManager.gridTiles[position].CheckIfObject())
+        {
+            return 1;
+        }
+        else
+        {
+            ObstacleData ObstacleHolder = GridManager.gridTiles[position].GetObstacle();
+            GameObject Obstacle = ObstacleHolder.gameObject;
+
+            Vector2[] EnemyPositions = new Vector2[10];
+            int counter2 = 0;
+            foreach(GameObject entry in GameObject.FindGameObjectsWithTag("Enemy"))
+            {
+                EnemyPositions[counter2] = (Vector2) entry.transform.position;
+                counter2++;
+            }
+
+            Vector2 destination = position + direction;
+            if (ObstacleHolder.GetObstacleData().Movable && !EnemyPositions.Contains(destination)) 
+            {
+                GameManager.Instance.gridManager.GetTileAtPositionSpecial(position + direction).ObjectSlot.SetActive(true);
+                GameObject Clone = Instantiate(Obstacle, GameManager.Instance.gridManager.GetTileAtPositionSpecial(position + direction).ObjectSlot.transform);
+                Clone.name = Obstacle.name;
+                Destroy(Obstacle);
+                GameManager.Instance.gridManager.GetTileAtPositionSpecial(position).ObjectSlot.SetActive(false);
+                return 1;
+            }
+            else
+            {
+                return -1;
+            }
+            
+        }
+        
     }
 
     private void Update()
@@ -186,117 +211,5 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    ///////////////////////////////////////////////////////// obstacle stuff
-
-    public bool objectMove(Vector2 direction)
-    {
-        if (Mathf.Abs(direction.x) < 0.5)
-        {
-            direction.x = 0;
-        }
-        else
-        {
-            direction.y = 0;
-        }
-        direction.Normalize();
-
-        //check if player is blocked.
-        if (Blocked(transform.position, direction))
-        {
-            return false;
-        }
-        else
-        {
-            transform.Translate(direction);
-            return true;
-        }
-    }
-
-    //interacting with the blocks and getting them to something here.
-    public bool Blocked(Vector3 position, Vector2 direction)
-    {
-        Vector2 newpos = new Vector2(position.x, position.y) + direction;
-        //Stactic block, doesn't move.
-        foreach (var obj in BlockObstacles)
-        {
-            if (obj.transform.position.x == newpos.x && obj.transform.position.y == newpos.y)
-            {
-                return true;
-            }
-        }
-
-        //Push block, supposed to move obe block at a time in the direction of the player
-        foreach (var objToPush in PushObstacles)
-        {
-            if (objToPush.transform.position.x == newpos.x && objToPush.transform.position.y == newpos.y)
-            {
-
-                DoObstacle objpush = objToPush.GetComponent<DoObstacle>();
-                if (objToPush && objpush.Move(direction))
-                {
-                    return false;
-                }
-                else
-                {
-                    return true;
-                }
-            }
-        }
-
-        //Block destroys the player when they come in contact with it
-        foreach (var objEx in ExplodeObstacles)
-        {
-            if (objEx.transform.position.x == newpos.x && objEx.transform.position.y == newpos.y)
-            {
-
-                DoObstacle objexplode = objEx.GetComponent<DoObstacle>();
-                if (objEx && objexplode.Move(direction))
-                {
-                    gameObject.SetActive(false);
-                    return false;
-                }
-                else
-                {
-                    return true;
-                }
-            }
-        }
-        //This block pushes the player a space backwards.
-        foreach (var objToBackPush in BackPushObstacles)
-        {
-            if (objToBackPush.transform.position.x == newpos.x && objToBackPush.transform.position.y == newpos.y)
-            {
-
-                DoObstacle objbackpush = objToBackPush.GetComponent<DoObstacle>();
-                if (objToBackPush && objbackpush.Move(direction))
-                {
-                    transform.Translate(-1, -1, 0);
-                    return false;
-                }
-                else
-                {
-                    return true;
-                }
-            }
-        }
-        //This blocks teleports the player to new position on the grid.
-        foreach (var objToTeleport in TeleportObstacles)
-        {
-            if (objToTeleport.transform.position.x == newpos.x && objToTeleport.transform.position.y == newpos.y)
-            {
-
-                DoObstacle objteleport = objToTeleport.GetComponent<DoObstacle>();
-                if (objToTeleport && objteleport.Move(direction))
-                {
-                    transform.Translate(5, 5, 0);
-                    return false;
-                }
-                else
-                {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
+   
 }

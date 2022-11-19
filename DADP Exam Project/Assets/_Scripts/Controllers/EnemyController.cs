@@ -49,11 +49,11 @@ public class EnemyController : MonoBehaviour
             {
                 tile.pathData.setPathVector(new Vector2(0, 0));
             }
-            else if(tile.Walkable)
+            else if(tile.Walkable && tile.CheckSlotEmpty())
             {
                 tile.pathData.setPathVector(new Vector2(HorizontalDistance(entry.Key, Position), VerticalDistance(entry.Key, Position)));
             }
-            else if(!tile.Walkable)
+            else
             {
                 tile.pathData.setPathVector(new Vector2(2000, 2000));
             }
@@ -68,9 +68,11 @@ public class EnemyController : MonoBehaviour
         Vector2 downMove = EnemyPosition + Vector2.down;
         Vector2 rightMove = EnemyPosition + Vector2.right;
         GridManager gridM = GameManager.Instance.gridManager;
-
+        Debug.Log(gridM.grid_height);
+        Debug.Log(gridM.grid_width);
+        Debug.Log(EnemyPosition);
         Vector2 option1;
-        if (upMove.y > gridM.grid_height)
+        if (upMove.y > gridM.grid_height-1)
         {
             option1 = new Vector2(10000,10000);
             
@@ -83,13 +85,13 @@ public class EnemyController : MonoBehaviour
 
 
         Vector2 option2;
-        if (leftMove.x > gridM.grid_width)
+        if (rightMove.x > gridM.grid_width-1)
         {
             option2 = new Vector2(10000, 10000);
         }
         else
         {
-           option2 = GridManager.gridTiles[leftMove].pathData.pathVector();
+           option2 = GridManager.gridTiles[rightMove].pathData.pathVector();
         }
         int option2A = (int)(option2.x + option2.y);
 
@@ -106,13 +108,13 @@ public class EnemyController : MonoBehaviour
         int option3A = (int)(option3.x + option3.y);
 
         Vector2 option4;
-        if (rightMove.x < 0)
+        if (leftMove.x < 0)
         {
            option4 = new Vector2(10000, 10000);
         }
         else
         {
-           option4 = GridManager.gridTiles[rightMove].pathData.pathVector();
+           option4 = GridManager.gridTiles[leftMove].pathData.pathVector();
         }
         int option4A = (int)(option4.x + option4.y);
 
@@ -151,9 +153,9 @@ public class EnemyController : MonoBehaviour
         {
 
             //set direction of sprite to movement direction 
-            spriteRenderer.flipX = true;
+            spriteRenderer.flipX = false;
 
-            return GridManager.gridTiles[leftMove];
+            return GridManager.gridTiles[rightMove];
         }
         else if (option3A < option4A)
         {
@@ -162,19 +164,23 @@ public class EnemyController : MonoBehaviour
         else
         {
             //set direction of sprite to movement direction 
-            spriteRenderer.flipX = false;
+            spriteRenderer.flipX = true;
 
-            return GridManager.gridTiles[rightMove];
+            return GridManager.gridTiles[leftMove];
         }
 
     }
 
     public void Move(RoughTile NewTile)
     {
-        PrevEnemyPosition = this.transform.position;
-        this.transform.position = NewTile.transform.position;
-        EnemyPosition = this.transform.position;
-        EnemyTile = GridManager.gridTiles[EnemyPosition];
+        if (GridManager.gridTiles[NewTile.transform.position].CheckSlotEmpty())
+        {
+            PrevEnemyPosition = this.transform.position;
+            this.transform.position = NewTile.transform.position;
+            EnemyPosition = this.transform.position;
+            EnemyTile = GridManager.gridTiles[EnemyPosition];
+        }
+        
     }
 
     public void EnemyMove(Vector2 Target)
