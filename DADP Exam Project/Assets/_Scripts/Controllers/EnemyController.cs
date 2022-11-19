@@ -17,6 +17,10 @@ public class EnemyController : MonoBehaviour
 
     public bool enemyAlive;
 
+    //animation variables
+    public Animator animator;
+    public SpriteRenderer spriteRenderer;
+
     private void Start()
     {
         enemyAlive = true;
@@ -145,6 +149,10 @@ public class EnemyController : MonoBehaviour
 
         else if(option2A < option3A && option2A < option4A)
         {
+
+            //set direction of sprite to movement direction 
+            spriteRenderer.flipX = true;
+
             return GridManager.gridTiles[leftMove];
         }
         else if (option3A < option4A)
@@ -153,6 +161,9 @@ public class EnemyController : MonoBehaviour
         }
         else
         {
+            //set direction of sprite to movement direction 
+            spriteRenderer.flipX = false;
+
             return GridManager.gridTiles[rightMove];
         }
 
