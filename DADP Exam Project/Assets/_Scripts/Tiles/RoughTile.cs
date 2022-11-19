@@ -100,7 +100,8 @@ public class RoughTile : BasicTile
 
         ObjectSlot.SetActive(true);
         if (!Obs.Movable) { this.Walkable = false; }
-        
+        if (Obs.Movable) { this.Walkable = true; }
+
         switch (Obs.ObsType)
         {
             case Obstacle.ObstacleType.type1:
@@ -130,6 +131,8 @@ public class RoughTile : BasicTile
                 temp1.transform.localPosition = Vector3.zero;
                 temp1.GetComponent<SpriteRenderer>().sprite = obs.GetComponent<ObstacleData>().GetObstacleData().Sprites[1];
                 temp1.GetComponent<SpriteRenderer>().sortingOrder = 1;
+
+                if (Obs.Movable) {other_tile.Walkable = true; }
                 break;
 
             case Obstacle.ObstacleType.type5:

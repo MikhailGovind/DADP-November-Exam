@@ -154,7 +154,8 @@ public class PlayerController : MonoBehaviour
             }
 
             Vector2 destination = position + direction;
-            if (ObstacleHolder.GetObstacleData().Movable && !EnemyPositions.Contains(destination)) 
+            GridManager gridRef = GameManager.Instance.gridManager;
+            if (ObstacleHolder.GetObstacleData().Movable && ObstacleHolder.GetObstacleData().Blocks==1 && GameManager.Instance.gridManager.GetTileAtPositionSpecial(position + direction).CheckSlotEmpty() && !EnemyPositions.Contains(destination)) 
             {
                 GameManager.Instance.gridManager.GetTileAtPositionSpecial(position + direction).ObjectSlot.SetActive(true);
                 GameObject Clone = Instantiate(Obstacle, GameManager.Instance.gridManager.GetTileAtPositionSpecial(position + direction).ObjectSlot.transform);
@@ -163,6 +164,22 @@ public class PlayerController : MonoBehaviour
                 GameManager.Instance.gridManager.GetTileAtPositionSpecial(position).ObjectSlot.SetActive(false);
                 return 1;
             }
+            //else if (ObstacleHolder.GetObstacleData().Movable && ObstacleHolder.GetObstacleData().Blocks == 2 && (GameManager.Instance.gridManager.GetTileAtPositionSpecial(position + direction).CheckSlotEmpty() || GameManager.Instance.gridManager.GetTileAtPositionSpecial(position + direction).GetObstacle().GetObstacleData().ObsType == (Obstacle.ObstacleType)3) &&!EnemyPositions.Contains(destination))
+            //{
+            //    if(direction == Vector2.left)
+            //    {
+            //        gridRef.
+            //    }
+                
+            //    if(direction == Vector2.right)
+            //    {
+
+            //    }
+
+
+                
+            //    return 1;
+            //}
             else
             {
                 return -1;

@@ -38,3 +38,4 @@ MonoBehaviour:
   obstacles:
   - {x: 0, y: 1, z: 1}
   - {x: 0, y: 3, z: 1}
+  - {x: 3, y: 1, z: 3}
