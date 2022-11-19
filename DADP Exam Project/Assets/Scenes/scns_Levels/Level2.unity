@@ -1667,7 +1667,7 @@ MonoBehaviour:
   gridManager: {fileID: 160360953}
   <currentGrid>k__BackingField: {fileID: 11400000, guid: 14843c69eb30f4945af99f6e2027df8f, type: 2}
   <obstaclesList>k__BackingField: {fileID: 11400000, guid: eb83704025ea8904bb7ef3f56569a76f, type: 2}
-  CustomDebug: 1
+  CustomDebug: 0
   CustomDebug2: 0
 --- !u!1 &963327502
 GameObject:

@@ -113,34 +113,36 @@ public class EnemyController : MonoBehaviour
         int option4A = (int)(option4.x + option4.y);
 
 
-        if (option1A == option4A && PlayerPosition.y > EnemyPosition.y)
-        {
-            return GridManager.gridTiles[upMove];
-        }
-        else if (option1A == option4A && PlayerPosition.y < EnemyPosition.y)
-        {
-            return GridManager.gridTiles[downMove];
-        }
+        //if (option1A == option4A && PlayerPosition.y > EnemyPosition.y)
+        //{
+        //    return GridManager.gridTiles[upMove];
+        //}
+        //else if (option1A == option4A && PlayerPosition.y < EnemyPosition.y)
+        //{
+        //    return GridManager.gridTiles[downMove];
+        //}
 
-        else if (option1A == option2A && PlayerPosition.y > EnemyPosition.y)
-        {
-            return GridManager.gridTiles[upMove];
-        }
+        //else if (option1A == option2A && PlayerPosition.y > EnemyPosition.y)
+        //{
+        //    return GridManager.gridTiles[upMove];
+        //}
 
-        else if (option2A == option3A && PlayerPosition.x < EnemyPosition.x)
-        {
-            return GridManager.gridTiles[leftMove];
-        }
-        else if (option2A == option3A && PlayerPosition.x > EnemyPosition.x)
-        {
-            return GridManager.gridTiles[rightMove];
-        }
+        //else if (option2A == option3A && PlayerPosition.x < EnemyPosition.x)
+        //{
+        //    return GridManager.gridTiles[leftMove];
+        //}
+        //else if (option2A == option3A && PlayerPosition.x > EnemyPosition.x)
+        //{
+        //    return GridManager.gridTiles[rightMove];
+        //}
 
 
         if (option1A < option2A && option1A < option3A && option1A < option4A)
         {
             return GridManager.gridTiles[upMove];
         }
+        
+
         else if(option2A < option3A && option2A < option4A)
         {
             return GridManager.gridTiles[leftMove];
