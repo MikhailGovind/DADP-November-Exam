@@ -141,6 +141,11 @@ public class PlayerController : MonoBehaviour
             GameObject Obstacle = ObstacleHolder.gameObject;
 
             Vector2[] EnemyPositions = new Vector2[10];
+            for(int k =0; k<EnemyPositions.Length; k++)
+            {
+                EnemyPositions[k] = Vector2.negativeInfinity;
+            }
+            
             int counter2 = 0;
             foreach(GameObject entry in GameObject.FindGameObjectsWithTag("Enemy"))
             {
