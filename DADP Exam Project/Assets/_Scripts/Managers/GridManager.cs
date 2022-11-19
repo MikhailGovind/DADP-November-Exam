@@ -11,7 +11,8 @@ using TMPro;
  * setup and the corresponding GridController script */
 public class GridManager : MonoBehaviour
 {
-    private int grid_width, grid_height;
+    public int grid_width{get; private set;}
+    public int grid_height{get; private set;}
 
     [SerializeField]
     private RoughTile tilePrefab; // Tile prefab used to instantiate grid
@@ -32,6 +33,8 @@ public class GridManager : MonoBehaviour
     {
         grid_width = gridController.currentGrid.Width; // ScriptableObject {CustomGrid -> TestGrid} data used to set grid parameters
         grid_height = gridController.currentGrid.Height; // ScriptableObject {CustomGrid -> TestGrid} data used to set grid parameters
+        
+        bool normalTile;
 
         GameObject gridObject = GameObject.Find("Grid"); // Object in hierarchy that each instantiated tile will attach to as a child
 
@@ -46,47 +49,52 @@ public class GridManager : MonoBehaviour
                 if (gridController.currentGrid.Pits.Contains(coordinates))
                 {
                     spawnedTile = Instantiate(pitPrefab, new Vector3(x, y), Quaternion.identity, gridObject.transform);
+                    spawnedTile.name = $"Pit: {x}|{y}";
+                    normalTile = false;
                 }
                 else if (gridController.currentGrid.WinTiles.Contains(coordinates))
                 {
                     spawnedTile = Instantiate(winTilePrefab, new Vector3(x, y), Quaternion.identity, gridObject.transform);
+                    spawnedTile.name = $"WinTile: {x}|{y}";
+                    normalTile = false;
                 }
                 else 
                 {
                     spawnedTile = Instantiate(tilePrefab, new Vector3(x, y), Quaternion.identity, gridObject.transform);
+                    spawnedTile.name = $"Tile: {x}|{y}";
+                    normalTile = true;
                 }
                 spawnedTile.SetGridPosition(new Vector2(x, y));
-                spawnedTile.name = $"Tile: {x}|{y}";
-                spawnedTile.setDebugText($"{x}|{y}",false);
-                if (x == 0 && y == 0) // bottom left corner
+                spawnedTile.setDebugText($"{x}|{y}", false);
+                if (normalTile && x == 0 && y == 0) // bottom left corner
                 {
                     spawnedTile.GetComponent<SpriteRenderer>().sprite = gridController.currentGrid.Sprites[6];
                 }
-                else if (x == 0 && y == grid_height -1) // top left corner
+                else if (normalTile && x == 0 && y == grid_height -1) // top left corner
                 {
                     spawnedTile.GetComponent<SpriteRenderer>().sprite = gridController.currentGrid.Sprites[0];
                 }
-                else if (x == grid_width -1 && y == 0) // bottom right corner
+                else if (normalTile && x == grid_width -1 && y == 0) // bottom right corner
                 {
                     spawnedTile.GetComponent<SpriteRenderer>().sprite = gridController.currentGrid.Sprites[8];
                 }
-                else if (x == grid_width - 1  && y == grid_height - 1 ) // top right corner
+                else if (normalTile && x == grid_width - 1  && y == grid_height - 1 ) // top right corner
                 {
                     spawnedTile.GetComponent<SpriteRenderer>().sprite = gridController.currentGrid.Sprites[2];
                 }
-                else if(x == 0) // left side
+                else if(normalTile && x == 0) // left side
                 {
                     spawnedTile.GetComponent<SpriteRenderer>().sprite = gridController.currentGrid.Sprites[3];
                 }
-                else if (y == 0) // bottom side
+                else if (normalTile && y == 0) // bottom side
                 {
                     spawnedTile.GetComponent<SpriteRenderer>().sprite = gridController.currentGrid.Sprites[7];
                 }
-                else if (x == grid_width - 1) // right side
+                else if (normalTile && x == grid_width - 1) // right side
                 {
                     spawnedTile.GetComponent<SpriteRenderer>().sprite = gridController.currentGrid.Sprites[5];
                 }
-                else if (y == grid_height - 1) // top side
+                else if (normalTile && y == grid_height - 1) // top side
                 {
                     spawnedTile.GetComponent<SpriteRenderer>().sprite = gridController.currentGrid.Sprites[1];
                 }

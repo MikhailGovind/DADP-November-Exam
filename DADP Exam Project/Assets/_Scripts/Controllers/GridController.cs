@@ -107,8 +107,8 @@ public class GridController: MonoBehaviour
     // ************************************ //
     private void Start()
     {
-        overlaySwitch += EnableDebugOverlay;
-        overlaySwitch2 += EnableDebugOverlay2;
+        overlaySwitch = EnableDebugOverlay;
+        overlaySwitch2 = EnableDebugOverlay2;
     }
     // ************************************ //
     //private void OnValidate()
