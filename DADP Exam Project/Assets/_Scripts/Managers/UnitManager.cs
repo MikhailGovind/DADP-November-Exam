@@ -10,7 +10,10 @@ public class UnitManager : MonoBehaviour
     public EnemyController enemyController { get; private set; }
 
     [field: SerializeField]
-    /**/public EnemyController enemyController2 { get; private set; }
+    public EnemyController enemyController2 { get; private set; }
+
+    [field: SerializeField]
+    public EnemyController enemyController3 { get; private set; }
 
     [field: SerializeField]
     public PlayerController playerController { get; private set; }
@@ -42,7 +45,9 @@ public class UnitManager : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(time);
         enemyController.EnemyMove(playerController.PlayerPosition);
-        /**/enemyController2.EnemyMove(playerController.PlayerPosition);
+        enemyController2.EnemyMove(playerController.PlayerPosition);
+        enemyController3.EnemyMove(playerController.PlayerPosition);
+
         yield return null;
     }
 
