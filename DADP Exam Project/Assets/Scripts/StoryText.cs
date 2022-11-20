@@ -28,23 +28,21 @@ public class StoryText : MonoBehaviour
 
     public IEnumerator startStory()
     {
-        nextButton.gameObject.SetActive(true);
-
         hq1.gameObject.SetActive(true);
         yield return new WaitForSeconds(1f);
 
         player1.gameObject.SetActive(true);
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(3f);
 
 
         hq2.gameObject.SetActive(true);
-        yield return new WaitForSeconds(12f);
+        yield return new WaitForSeconds(5f);
 
 
         player2.gameObject.SetActive(true);
-        yield return new WaitForSeconds(14f);
+        yield return new WaitForSeconds(2f);
 
-        
+        nextButton.gameObject.SetActive(true);
     }
 
     public void buttenEndStory()
@@ -54,8 +52,6 @@ public class StoryText : MonoBehaviour
 
     public IEnumerator endStory()
     {
-        nextButton2.gameObject.SetActive(true);
-
         hq1.gameObject.SetActive(false);
         player1.gameObject.SetActive(false);
         hq2.gameObject.SetActive(false);
@@ -63,12 +59,12 @@ public class StoryText : MonoBehaviour
         nextButton.gameObject.SetActive(false);
 
         hq3.gameObject.SetActive(true);
-        yield return new WaitForSeconds(16f);
+        yield return new WaitForSeconds(5f);
 
         player3.gameObject.SetActive(true);
         yield return new WaitForSeconds(1f);
 
-        
+        nextButton2.gameObject.SetActive(true);
     }
 
     public void MainMenu()
