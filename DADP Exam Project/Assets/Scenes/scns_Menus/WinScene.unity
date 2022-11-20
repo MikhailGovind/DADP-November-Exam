@@ -236,7 +236,7 @@ GameObject:
   - component: {fileID: 351271845}
   - component: {fileID: 351271844}
   m_Layer: 5
-  m_Name: btn_Menu
+  m_Name: btn_LevelSelect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -308,7 +308,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 638982384}
         m_TargetAssemblyTypeName: MenuButtonControls, Assembly-CSharp
-        m_MethodName: MainMenu
+        m_MethodName: LevelSelect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1314,7 +1314,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Floor cleared
+  m_text: Level cleared
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
