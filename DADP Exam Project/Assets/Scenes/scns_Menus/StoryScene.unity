@@ -1597,8 +1597,8 @@ MonoBehaviour:
     the 'sanitizing' system  - it will Eliminate the Aliens! \n\nBe wary though!
     These Aliens can kill with a single touch! If you die, we will have to awaken
     another cadet.\n\nEach level has certain limiting environment conditions to be
-    aware - for example some levels might have a limited number of moves before your
-    exosuit power supply runs out, or an oxygen timer.\n\nRemember storage crates
+    aware of - for example some levels might have a limited number of moves before
+    your exosuit power supply runs out, or an oxygen timer.\n\nRemember storage crates
     that take up one tile are movable - they will block the path of the physically
     weak Aliens. The other multi-tile crates are too heavy for you to move though.\n\nAlso,
     watch out for the impassable fiery holes torn in the level floors!\n\nFinally,
