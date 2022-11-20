@@ -161,10 +161,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '"Why have I been released!?
-
-    A call? As soon as I been released. Can''t
-    they let a man collect himself a little..."'
+  m_text: "\"Ugh, ..why have I been woken up!?\nA call..? \nAs soon as I've been
+    released.. can't they let a man collect himself a little!\""
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
@@ -194,7 +192,7 @@ MonoBehaviour:
   m_fontSize: 50
   m_fontSizeBase: 50
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
@@ -1358,11 +1356,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'HQ:
-
-
-    "We have released you from hydrostasis. Aliens have boarded
-    the different floors of your spacecraft. Eliminate them."'
+  m_text: "HQ:\n\n\"Cadet! We have released you from cryostasis because Alien invaders
+    have boarded the ship!\nYou must Eliminate them! \n\nThey're spreading from level
+    5 to the other levels - we recommend you start from level 1 as they have not
+    got as strong a foothold there yet.\""
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
@@ -1425,7 +1422,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 0, w: -0.000015073371}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1455,8 +1452,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -349.58, y: -78}
-  m_SizeDelta: {x: 991.9, y: 201.51}
+  m_AnchoredPosition: {x: -339.81, y: -106}
+  m_SizeDelta: {x: 1011.45, y: 621.74}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1492751412
 GameObject:
@@ -1596,15 +1593,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'HQ:
-
-
-    "You must step on the tile with the blue circle to engage the
-    the sanitizing system that will eliminate them. Crates that are one tile big
-    are movable and from our research will block the aliens. The others may be too
-    big. Watch out for holes torn in the floor. You might engage defense mechanism
-    on certain floors, look out for that. This is your mission. Move with "WASD"
-    and if they touch you, you will die! HQ out!"'
+  m_text: "HQ:\n\n\"Step on the tile with the blue circle on each level to engage
+    the 'sanitizing' system  - it will Eliminate the Aliens! \n\nBe wary though!
+    These Aliens can kill with a single touch! If you die, we will have to awaken
+    another cadet.\n\nEach level has certain limiting environment conditions to be
+    aware - for example some levels might have a limited number of moves before your
+    exosuit power supply runs out, or an oxygen timer.\n\nRemember storage crates
+    that take up one tile are movable - they will block the path of the physically
+    weak Aliens. The other multi-tile crates are too heavy for you to move though.\n\nAlso,
+    watch out for the impassable fiery holes torn in the level floors!\n\nFinally,
+    move your exosuit with \"WASD\" or the arrow keys. \n\nHQ out!\""
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
@@ -1631,10 +1629,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
+  m_fontSize: 39.95
   m_fontSizeBase: 50
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
@@ -1697,8 +1695,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -364, y: 189}
-  m_SizeDelta: {x: 991.9, y: 562.76}
+  m_AnchoredPosition: {x: -374.62, y: -18.09}
+  m_SizeDelta: {x: 1013.14, y: 976.95}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1822478340
 GameObject:
