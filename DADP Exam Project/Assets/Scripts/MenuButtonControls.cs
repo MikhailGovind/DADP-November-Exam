@@ -17,7 +17,12 @@ public class MenuButtonControls : MonoBehaviour
 
     public void MainMenu()  // Loads the Menu scene
     {
-    SceneManager.LoadScene("MenuScene");
+        SceneManager.LoadScene("MenuScene");
+    }
+
+    public void LevelSelect() //Loads the level select scene
+    {
+        SceneManager.LoadScene("LevelSelectScene");
     }
 
     #region //level loads
@@ -47,7 +52,7 @@ public class MenuButtonControls : MonoBehaviour
         SceneManager.LoadScene("Level5");
     }
 
-    #endregion
+    #endregion  
 
     public void QuitGame()  // Quits and exits the game
     {
