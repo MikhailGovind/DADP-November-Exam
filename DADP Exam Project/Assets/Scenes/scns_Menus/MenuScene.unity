@@ -1249,7 +1249,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1732391138}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1276,7 +1276,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Music: \r\n\nCodeManu - https://opengameart.org/content/magic-space\r\n\nTrevor
+  m_text: "[Exam Group 2]\n\nMusic: \r\n\nCodeManu - https://opengameart.org/content/magic-space\r\n\nTrevor
     Lentz - Ethereal Realms & Map Screen - https://opengameart.org/content/ethereal-gospel-full-soundtrack\r\n\nKiluaBoy
     - IntoTheStars - https://opengameart.org/content/sci-fi-adventure-eastern-quiet-piano-loop\n\nAlip
     - https://opengameart.org/content/time-runs-out\n\nSound Effects:\n\nMixkit -
@@ -1307,10 +1307,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 33
+  m_fontSize: 31.2
   m_fontSizeBase: 33
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
@@ -1343,7 +1343,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 0, w: 56.640717}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2658,7 +2658,7 @@ RectTransform:
   m_Children:
   - {fileID: 1932970982}
   m_Father: {fileID: 1732391138}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2789,8 +2789,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1322170256}
-  - {fileID: 1729069774}
   - {fileID: 944273568}
+  - {fileID: 1729069774}
   m_Father: {fileID: 1583947064}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
