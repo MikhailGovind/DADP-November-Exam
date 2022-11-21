@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+//using UnityEngine.UIElements;
 
 public class ColorSetter : MonoBehaviour
 {
@@ -19,7 +20,8 @@ public class ColorSetter : MonoBehaviour
     [SerializeField]
     private Color colorPicker = Color.green;
 
-
+    [SerializeField]
+    private GameObject winScreen;
 
     private void Start()
     {
@@ -48,6 +50,11 @@ public class ColorSetter : MonoBehaviour
         if (progressTracker.GetLevel5())
         {
             level5.color = colorPicker;
+        }
+
+        if(progressTracker.GetLevel1() && progressTracker.GetLevel2() && progressTracker.GetLevel3() && progressTracker.GetLevel4() && progressTracker.GetLevel5())
+        {
+            winScreen.SetActive(true);
         }
 
     }
