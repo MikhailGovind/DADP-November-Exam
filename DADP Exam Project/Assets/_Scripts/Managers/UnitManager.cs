@@ -74,6 +74,28 @@ public class UnitManager : MonoBehaviour
     //load win scene
     public void playerWin()
     {
+        ProgressTracker progressTracker = GameObject.Find("LevelProgressTracker").GetComponent<ProgressTracker>();
+        string currentScene = SceneManager.GetActiveScene().name;
+
+        switch(currentScene)
+        {
+            case "Level1":
+                progressTracker.SetLevel1(true);
+                break;
+            case "Level2":
+                progressTracker.SetLevel2(true);
+                break;
+            case "Level3":
+                progressTracker.SetLevel3(true);
+                break;
+            case "Level4":
+                progressTracker.SetLevel4(true);
+                break;
+            case "Level5":
+                progressTracker.SetLevel5(true);
+                break;
+        }
+        
         SceneManager.LoadScene("WinScene");
     }
 
