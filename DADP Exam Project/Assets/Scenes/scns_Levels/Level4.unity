@@ -1180,7 +1180,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collisionTilemap: {fileID: 603350906}
   playerMoves: 0
-  movesCounter: 24
+  movesCounter: 25
   signal: 0
   animator: {fileID: 1947909861}
   spriteRenderer: {fileID: 1947909858}
